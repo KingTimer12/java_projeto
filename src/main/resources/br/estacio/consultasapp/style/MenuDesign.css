@@ -1,0 +1,43 @@
+.root {
+    -fx-background-color: #fff;
+}
+
+.title-card {
+    -fx-background-radius: 8;
+    -fx-background-color: #103667;
+    -fx-fill: #fff;
+}
+
+.card {
+    -fx-background-color: #1b4f93;
+    -fx-border-radius: 5;
+    -fx-background-radius: 5;
+    -fx-text-fill: #fff;
+}
+
+.card-btn {
+    -fx-background-color: #426eb4;
+    -fx-background-radius: 4px;
+    -fx-text-fill: #fff;
+    -fx-font-size: 14px;
+    -fx-font-family: "Arial";
+    -fx-cursor:hand;
+}
+
+.close {
+    -fx-background-color: transparent;
+    -fx-cursor:hand;
+}
+
+.close:hover {
+    -fx-background-color: #f43f57;
+}
+
+.minimize {
+    -fx-background-color: transparent;
+    -fx-cursor:hand;
+}
+
+.minimize:hover {
+    -fx-background-color: #cccccc;
+}

@@ -1,0 +1,79 @@
+plugins {
+  id 'java'
+  id 'application'
+  id 'org.javamodularity.moduleplugin' version '1.8.12'
+  id 'org.openjfx.javafxplugin' version '0.0.13'
+  id 'org.beryx.jlink' version '2.25.0'
+}
+
+group 'br.estacio'
+version '1.0-SNAPSHOT'
+
+repositories {
+  mavenCentral()
+  mavenLocal()
+  maven { url 'https://jitpack.io' }
+}
+
+ext {
+  junitVersion = '5.9.2'
+}
+
+sourceCompatibility = '17'
+targetCompatibility = '17'
+
+tasks.withType(JavaCompile) {
+  options.encoding = 'UTF-8'
+}
+
+application {
+  mainModule = 'br.estacio.consultasapp'
+  mainClass = 'br.estacio.consultasapp.HelloApplication'
+}
+
+javafx {
+  version = '17.0.6'
+  modules = ['javafx.controls', 'javafx.fxml']
+}
+
+dependencies {
+  implementation('org.kordamp.bootstrapfx:bootstrapfx-core:0.4.0')
+
+  implementation 'de.jensd:fontawesomefx-commons:9.1.2'
+  implementation 'de.jensd:fontawesomefx-controls:9.1.2'
+  implementation 'de.jensd:fontawesomefx-emojione:3.1.1-9.1.2'
+  implementation 'de.jensd:fontawesomefx-fontawesome:4.7.0-9.1.2'
+  implementation 'de.jensd:fontawesomefx-icons525:4.2.0-9.1.2'
+  implementation 'de.jensd:fontawesomefx-materialdesignfont:2.0.26-9.1.2'
+  implementation 'de.jensd:fontawesomefx-materialicons:2.2.0-9.1.2'
+  implementation 'de.jensd:fontawesomefx-octicons:4.3.0-9.1.2'
+  implementation 'de.jensd:fontawesomefx-weathericons:2.0.10-9.1.2'
+
+  implementation 'com.fasterxml.jackson.core:jackson-databind:2.12.7.1'
+
+  compileOnly 'org.projectlombok:lombok:1.18.28'
+  annotationProcessor 'org.projectlombok:lombok:1.18.28'
+
+  testCompileOnly 'org.projectlombok:lombok:1.18.28'
+  testAnnotationProcessor 'org.projectlombok:lombok:1.18.28'
+
+  implementation 'com.github.KingTimer12:CoreDB:1.1.0'
+
+  testImplementation("org.junit.jupiter:junit-jupiter-api:${junitVersion}")
+  testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:${junitVersion}")
+}
+
+test {
+useJUnitPlatform()}
+
+jlink {
+  imageZip = project.file("${buildDir}/distributions/app-${javafx.platform.classifier}.zip")
+  options = ['--strip-debug', '--compress', '2', '--no-header-files', '--no-man-pages']
+  launcher {
+    name = 'app'
+  }
+}
+
+jlinkZip {
+  group = 'distribution'
+}
