@@ -5,31 +5,42 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="00ad0853-d299-4ee3-9f47-99c421240c28" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/gradlew" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/gradlew.bat" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/settings.gradle" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/br/estacio/consultasapp/Main.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/br/estacio/consultasapp/controller/LoginController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/br/estacio/consultasapp/controller/MenuController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/br/estacio/consultasapp/database/DatabaseManager.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/br/estacio/consultasapp/handler/Manager.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/br/estacio/consultasapp/user/UserManager.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/br/estacio/consultasapp/user/dao/UserDAO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/br/estacio/consultasapp/user/json/UserJson.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/br/estacio/consultasapp/utils/json/JsonUtils.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/br/estacio/consultasapp/utils/json/interfaces/IJson.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/br/estacio/consultasapp/login.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/br/estacio/consultasapp/style/LoginDesign.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/br/estacio/consultasapp/style/MenuDesign.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/br/estacio/consultasapp/controller/GuiManager.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/br/estacio/consultasapp/controller/form/AdminFormController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/br/estacio/consultasapp/controller/form/FormController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/br/estacio/consultasapp/controller/form/types/AdminForm.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/br/estacio/consultasapp/controller/form/types/DoctorForm.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/br/estacio/consultasapp/controller/login/ILogin.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/br/estacio/consultasapp/controller/login/LoginController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/br/estacio/consultasapp/controller/login/types/AdminLogin.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/br/estacio/consultasapp/controller/login/types/DoctorLogin.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/br/estacio/consultasapp/user/User.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/br/estacio/consultasapp/user/dao/AdminDAO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/br/estacio/consultasapp/user/dao/DiagnosisDAO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/br/estacio/consultasapp/user/dao/DoctorDAO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/br/estacio/consultasapp/user/dao/PatientDAO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/br/estacio/consultasapp/user/dao/SecretaryDAO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/br/estacio/consultasapp/user/dao/TimeDAO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/br/estacio/consultasapp/user/dao/TreatmentDAO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/br/estacio/consultasapp/user/enums/Genders.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/br/estacio/consultasapp/user/enums/Status.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/br/estacio/consultasapp/utils/AlertMessage.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/br/estacio/consultasapp/utils/UsersPanel.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/br/estacio/consultasapp/adminLogin.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/br/estacio/consultasapp/style/MainFormDesign.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/estacio/consultasapp/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/estacio/consultasapp/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/estacio/consultasapp/controller/LoginController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/estacio/consultasapp/database/DatabaseManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/estacio/consultasapp/database/DatabaseManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/estacio/consultasapp/user/UserManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/estacio/consultasapp/user/UserManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/estacio/consultasapp/user/dao/UserDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/estacio/consultasapp/user/dao/AppointmentDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/br/estacio/consultasapp/login.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/br/estacio/consultasapp/menu.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/br/estacio/consultasapp/style/LoginDesign.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/br/estacio/consultasapp/style/LoginDesign.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/br/estacio/consultasapp/style/MenuDesign.css" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -59,6 +70,7 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="Enum" />
         <option value="Interface" />
         <option value="Class" />
       </list>
@@ -66,6 +78,20 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;KingTimer12&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">
+    <option name="selectedUrlAndAccountId">
+      <UrlAndAccount>
+        <option name="accountId" value="11f456c3-fb01-4174-8b0e-e8d6f4b90e73" />
+        <option name="url" value="https://github.com/KingTimer12/java_projeto.git" />
+      </UrlAndAccount>
+    </option>
   </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 5
@@ -82,14 +108,22 @@
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;git-widget-placeholder&quot;: &quot;master&quot;,
     &quot;last_opened_file_path&quot;: &quot;D:/java projetos/workspace/ConsultasApp/src/main/resources/br/estacio/consultasapp/style&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;
+    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;configurable.group.appearance&quot;
   }
 }</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="D:\java projetos\workspace\ConsultasApp\src\main\resources\br\estacio\consultasapp\style" />
     </key>
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="br.estacio.consultasapp.utils" />
+    </key>
     <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="br.estacio.consultasapp.user.dao" />
+      <recent name="br.estacio.consultasapp.controller.form.types" />
       <recent name="br.estacio.consultasapp.controller" />
     </key>
   </component>

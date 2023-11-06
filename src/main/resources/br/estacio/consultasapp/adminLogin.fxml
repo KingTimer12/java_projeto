@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import java.lang.String?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.text.Font?>
+
+<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.estacio.consultasapp.controller.login.types.AdminLogin">
+  <children>
+    <AnchorPane fx:id="main_form" prefHeight="200.0" prefWidth="200.0">
+      <children>
+        <AnchorPane prefHeight="407.0" prefWidth="303.0" styleClass="left-form" stylesheets="@style/LoginDesign.css">
+          <children>
+
+            <Label layoutX="62.0" layoutY="201.0" text="Agenda de Consultas" textFill="WHITE">
+              <font>
+                <Font name="Tahoma" size="19.0" />
+              </font>
+            </Label>
+                  <FontAwesomeIconView fill="WHITE" glyphName="BOOK" layoutX="124.0" layoutY="170.0" selectionStart="1" size="5em" />
+                  <Label layoutX="116.0" layoutY="228.0" text="Painel Admin" textFill="WHITE">
+                     <font>
+                        <Font name="Tahoma" size="12.0" />
+                     </font>
+                  </Label>
+          </children></AnchorPane>
+        <AnchorPane fx:id="login_form" layoutX="297.0" prefHeight="407.0" prefWidth="303.0" styleClass="right-form" stylesheets="@style/LoginDesign.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="297.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+          <children>
+
+            <Label layoutX="95.0" layoutY="90.0" text="Acessar Conta">
+              <font>
+                <Font name="Tahoma" size="18.0" />
+              </font>
+            </Label>
+            <TextField fx:id="login_username" layoutX="41.0" layoutY="126.0" prefHeight="30.0" prefWidth="220.0" promptText="Usuário" />
+            <Button fx:id="login_btn" layoutX="51.0" layoutY="245.0" mnemonicParsing="false" onAction="#login" prefHeight="38.0" prefWidth="200.0" styleClass="login-btn" stylesheets="@style/LoginDesign.css" text="Login" />
+            <Button layoutX="232.0" layoutY="14.0" mnemonicParsing="false" onAction="#close" prefHeight="23.0" prefWidth="61.0" styleClass="close" stylesheets="@style/LoginDesign.css" AnchorPane.rightAnchor="2.0" AnchorPane.topAnchor="3.0">
+              <graphic>
+
+              </graphic>
+                     <graphic>
+                        <FontAwesomeIconView glyphName="CLOSE">
+                           <font>
+                              <Font size="16.0" />
+                           </font>
+                        </FontAwesomeIconView>
+                     </graphic>
+            </Button>
+                  <FontAwesomeIconView fill="#2f6f80" glyphName="USER" layoutX="130.0" layoutY="79.0" selectionFill="#52d4ff" size="5em" />
+                  <CheckBox fx:id="login_checkbox" layoutX="41.0" layoutY="216.0" mnemonicParsing="false" onAction="#loginShowPassword" prefHeight="17.0" prefWidth="113.0" text="Mostrar senha" />
+            <PasswordField fx:id="login_password" layoutX="41.0" layoutY="174.0" prefHeight="30.0" prefWidth="220.0" promptText="Senha" />
+                  <TextField fx:id="login_showPassword" layoutX="41.0" layoutY="174.0" prefHeight="30.0" prefWidth="220.0" promptText="Senha" styleClass="text-field" stylesheets="@style/LoginDesign.css" visible="false" />
+                  <ComboBox fx:id="login_panel" layoutX="79.0" layoutY="311.0" onAction="#switchPanel" prefHeight="30.0" prefWidth="150.0" promptText="Painel" stylesheets="@style/LoginDesign.css">
+                     <styleClass>
+                        <String fx:value="white-bg" />
+                        <String fx:value="select-field" />
+                     </styleClass>
+                  </ComboBox>
+          </children>
+        </AnchorPane>
+      </children>
+    </AnchorPane>
+  </children>
+</StackPane>

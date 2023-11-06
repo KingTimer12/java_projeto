@@ -6,29 +6,39 @@ import br.com.timer.annotations.TableName;
 import br.com.timer.collectors.DBCollector;
 import br.com.timer.objects.HandlerDAO;
 import br.com.timer.objects.rows.Rows;
-import br.com.timer.objects.rows.TypeField;
 import br.estacio.consultasapp.database.DatabaseManager;
 import br.estacio.consultasapp.handler.Manager;
-import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Getter;
 
+import java.util.Date;
+
 @Getter
-@AllArgsConstructor
-@TableName(name = "user")
-public class UserDAO extends HandlerDAO {
+@Builder
+@TableName(name = "treatment")
+public class TreatmentDAO extends HandlerDAO {
 
     @ColumnRow
     @PrimaryKeyAutoIncrement
     private int id;
 
-    @ColumnRow(field = "username", typeField = TypeField.TEXT)
-    private String name;
-
-    @ColumnRow(field = "password", typeField = TypeField.TEXT)
-    private String password;
+    @ColumnRow(field = "patient_id")
+    private int patientId;
+    @ColumnRow
+    private Date conclusionAt;
+    @ColumnRow
+    private String feedback;
+    @ColumnRow
+    private String progress;
+    @ColumnRow
+    private String plan;
 
     public void save() {
-        super.save(Rows.of("username", this.name));
+        super.save(Rows.of("patient_id", patientId));
+    }
+
+    public void load() {
+        super.load(Rows.of("id", this.id));
     }
 
     @Override
@@ -40,4 +50,5 @@ public class UserDAO extends HandlerDAO {
     public HandlerDAO getHandle() {
         return this;
     }
+
 }
