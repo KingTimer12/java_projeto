@@ -10,10 +10,12 @@ import br.estacio.consultasapp.database.DatabaseManager;
 import br.estacio.consultasapp.handler.Manager;
 import lombok.Builder;
 import lombok.Getter;
+import lombok.Setter;
 
 import java.util.Date;
 
 @Getter
+@Setter
 @Builder
 @TableName(name = "time")
 public class TimeDAO extends HandlerDAO {
@@ -40,7 +42,7 @@ public class TimeDAO extends HandlerDAO {
     }
 
     public void load() {
-        super.load(Rows.of("id", this.id));
+        super.load(Rows.of("doctor_id", doctorId));
     }
 
     @Override

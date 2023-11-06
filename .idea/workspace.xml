@@ -4,43 +4,19 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="00ad0853-d299-4ee3-9f47-99c421240c28" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/br/estacio/consultasapp/controller/GuiManager.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/br/estacio/consultasapp/controller/form/AdminFormController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/br/estacio/consultasapp/controller/form/FormController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/br/estacio/consultasapp/controller/form/types/AdminForm.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/br/estacio/consultasapp/controller/form/types/DoctorForm.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/br/estacio/consultasapp/controller/login/ILogin.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/br/estacio/consultasapp/controller/login/LoginController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/br/estacio/consultasapp/controller/login/types/AdminLogin.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/br/estacio/consultasapp/controller/login/types/DoctorLogin.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/br/estacio/consultasapp/user/User.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/br/estacio/consultasapp/user/dao/AdminDAO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/br/estacio/consultasapp/user/dao/DiagnosisDAO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/br/estacio/consultasapp/user/dao/DoctorDAO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/br/estacio/consultasapp/user/dao/PatientDAO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/br/estacio/consultasapp/user/dao/SecretaryDAO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/br/estacio/consultasapp/user/dao/TimeDAO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/br/estacio/consultasapp/user/dao/TreatmentDAO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/br/estacio/consultasapp/user/enums/Genders.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/br/estacio/consultasapp/user/enums/Status.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/br/estacio/consultasapp/utils/AlertMessage.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/br/estacio/consultasapp/utils/UsersPanel.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/br/estacio/consultasapp/adminLogin.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/br/estacio/consultasapp/style/MainFormDesign.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+    <list default="true" id="00ad0853-d299-4ee3-9f47-99c421240c28" name="Changes" comment="Última atualização pra mexer amanhã na aula, talvez">
+      <change afterPath="$PROJECT_DIR$/src/main/java/br/estacio/consultasapp/user/enums/Days.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/br/estacio/consultasapp/utils/WeeklySchedule.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/br/estacio/consultasapp/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/estacio/consultasapp/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/br/estacio/consultasapp/controller/LoginController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/br/estacio/consultasapp/database/DatabaseManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/estacio/consultasapp/database/DatabaseManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/br/estacio/consultasapp/user/UserManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/estacio/consultasapp/user/UserManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/br/estacio/consultasapp/user/dao/UserDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/estacio/consultasapp/user/dao/AppointmentDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/estacio/consultasapp/controller/form/AdminFormController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/estacio/consultasapp/controller/form/FormController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/estacio/consultasapp/controller/form/FormController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/estacio/consultasapp/controller/form/types/AdminForm.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/estacio/consultasapp/controller/form/types/AdminForm.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/estacio/consultasapp/user/dao/AppointmentDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/estacio/consultasapp/user/dao/AppointmentDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/estacio/consultasapp/user/dao/DoctorDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/estacio/consultasapp/user/dao/DoctorDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/estacio/consultasapp/user/dao/TimeDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/estacio/consultasapp/user/dao/TimeDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/estacio/consultasapp/user/enums/Genders.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/estacio/consultasapp/user/enums/Genders.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/estacio/consultasapp/user/enums/Status.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/estacio/consultasapp/user/enums/Status.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/br/estacio/consultasapp/login.fxml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/br/estacio/consultasapp/menu.fxml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/br/estacio/consultasapp/style/LoginDesign.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/br/estacio/consultasapp/style/LoginDesign.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/br/estacio/consultasapp/style/MenuDesign.css" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -70,8 +46,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Enum" />
         <option value="Interface" />
+        <option value="Enum" />
         <option value="Class" />
       </list>
     </option>
@@ -136,7 +112,20 @@
       <option name="presentableId" value="Default" />
       <updated>1694032339091</updated>
     </task>
+    <task id="LOCAL-00001" summary="Última atualização pra mexer amanhã na aula, talvez">
+      <option name="closed" value="true" />
+      <created>1699233648544</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1699233648545</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Última atualização pra mexer amanhã na aula, talvez" />
+    <option name="LAST_COMMIT_MESSAGE" value="Última atualização pra mexer amanhã na aula, talvez" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

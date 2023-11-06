@@ -2,22 +2,30 @@ package br.estacio.consultasapp.controller.form;
 
 import br.estacio.consultasapp.handler.Manager;
 import br.estacio.consultasapp.user.UserManager;
+import br.estacio.consultasapp.user.dao.AdminDAO;
+import br.estacio.consultasapp.user.dao.AppointmentDAO;
+import br.estacio.consultasapp.user.enums.Genders;
+import br.estacio.consultasapp.user.enums.Status;
 import javafx.application.Platform;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.chart.AreaChart;
+import javafx.scene.chart.BarChart;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.shape.Circle;
 
 import java.net.URL;
 import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.ResourceBundle;
-import java.util.TimeZone;
+import java.util.*;
+import java.util.stream.Stream;
 
 public abstract class FormController implements Initializable {
 
@@ -46,19 +54,32 @@ public abstract class FormController implements Initializable {
     protected Label lbl_total_patient;
 
     @FXML
-    protected Label btn_active_patient;
+    protected Label lbl_active_patient;
 
     @FXML
-    protected TableColumn<?, ?> dashboard_patient;
+    protected TableColumn<AppointmentDAO, Integer> dashboard_appointment_id;
 
     @FXML
-    protected TableColumn<?, ?> dashboard_pro;
+    protected BarChart<?, ?> dashboard_chart_appointment;
 
     @FXML
-    protected TableColumn<?, ?> dashboard_stats;
+    protected AreaChart<?, ?> dashboard_chart_patient;
 
     @FXML
-    protected TableView<?> dashboard_table;
+    protected TableColumn<AppointmentDAO, String> dashboard_date;
+
+
+    @FXML
+    protected TableColumn<AppointmentDAO, String> dashboard_patient;
+
+    @FXML
+    protected TableColumn<AppointmentDAO, String> dashboard_pro;
+
+    @FXML
+    protected TableColumn<AppointmentDAO, Status> dashboard_stats;
+
+    @FXML
+    protected TableView<AppointmentDAO> dashboard_table;
 
     @FXML
     protected Button btn_appointment;
@@ -148,13 +169,13 @@ public abstract class FormController implements Initializable {
     protected TableColumn<?, ?> patient_treatment;
     //Patient Form - END
 
-    public void switchForm(ActionEvent event) {
+    protected void switchForm(ActionEvent event) {
         dashboard_form.setVisible(event.getSource().equals(btn_dashboard));
         appointment_form.setVisible(event.getSource().equals(btn_appointment));
         patient_form.setVisible(event.getSource().equals(btn_pacient));
     }
 
-    public void runTime() {
+    protected void runTime() {
         new Thread() {
             @Override
             public void run() {
@@ -170,6 +191,49 @@ public abstract class FormController implements Initializable {
                 }
             }
         }.start();
+    }
+
+    protected String generateRandomID() {
+        Random random = new Random();
+        int min = 10000;
+        int max = 99999;
+        int randomID = random.nextInt(max - min + 1) + min;
+        return String.format("%05d", randomID);
+    }
+
+    protected List<String> getDailyTimeSlots() {
+        List<String> timeSlots = new ArrayList<>();
+        SimpleDateFormat timeFormat = new SimpleDateFormat("HH:mm");
+        Calendar calendar = Calendar.getInstance();
+
+        calendar.set(Calendar.HOUR_OF_DAY, 0);
+        calendar.set(Calendar.MINUTE, 0);
+
+        Calendar endOfDay = Calendar.getInstance();
+        endOfDay.set(Calendar.HOUR_OF_DAY, 23);
+        endOfDay.set(Calendar.MINUTE, 59);
+
+        while (calendar.before(endOfDay)) {
+            timeSlots.add(timeFormat.format(calendar.getTime()));
+            calendar.add(Calendar.MINUTE, 30);
+        }
+
+        return timeSlots;
+    }
+
+    protected ObservableList<String> genreList() {
+        List<String> days = new ArrayList<>(Stream.of(Genders.values()).map(Genders::getName).toList());
+        return FXCollections.observableList(days);
+    }
+
+    protected void dashboardDisplayData(AdminDAO adminDAO) {
+        ObservableList<AppointmentDAO> dashboardGetData = FXCollections.observableList(adminDAO.getAppointments());
+        dashboard_appointment_id.setCellValueFactory(new PropertyValueFactory<>("id"));
+        dashboard_patient.setCellValueFactory(new PropertyValueFactory<>("patientName"));
+        dashboard_pro.setCellValueFactory(new PropertyValueFactory<>("doctorName"));
+        dashboard_date.setCellValueFactory(new PropertyValueFactory<>("consultationHour"));
+        dashboard_stats.setCellValueFactory(new PropertyValueFactory<>("status"));
+        dashboard_table.setItems(dashboardGetData);
     }
 
     @Override

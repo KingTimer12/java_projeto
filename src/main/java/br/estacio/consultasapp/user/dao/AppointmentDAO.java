@@ -34,6 +34,21 @@ public class AppointmentDAO extends HandlerDAO {
     @ColumnRow
     private Status status;
 
+    private String patientName;
+    private String doctorName;
+
+    public void loadPatientName() {
+        PatientDAO patient = PatientDAO.builder().id(patientId).build();
+        patient.load();
+        this.patientName = patient.getFullName();
+    }
+
+    public void loadDoctorName() {
+        DoctorDAO doctor = DoctorDAO.builder().id(doctorId).build();
+        doctor.load();
+        this.doctorName = doctor.getFullName();
+    }
+
     public void save() {
         super.save(Rows.of("patient_id", patientId), Rows.of("doctor_id", doctorId));
     }

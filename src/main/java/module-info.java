@@ -36,4 +36,5 @@ module br.estacio.consultasapp {
 
     exports br.estacio.consultasapp.user;
     exports br.estacio.consultasapp.user.dao;
+    exports br.estacio.consultasapp.user.enums;
 }
