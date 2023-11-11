@@ -3,7 +3,7 @@ import java.util.Date;
 
 public class Exames {
 	private String tipoExame;
-	private String resultado;
+	private String diagnostico;
 	private Date dataExame;
 	
 	public String getTipoExame() {
@@ -12,11 +12,11 @@ public class Exames {
 	public void setTipoExame(String tipoExame) {
 		this.tipoExame = tipoExame;
 	}
-	public String getResultado() {
-		return resultado;
+	public String getDiagnostico() {
+		return diagnostico;
 	}
-	public void setResultado(String resultado) {
-		this.resultado = resultado;
+	public void setDiagnostico(String diagnostico) {
+		this.diagnostico = diagnostico;
 	}
 	public Date getDataExame() {
 		return dataExame;
