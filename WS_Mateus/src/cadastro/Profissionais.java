@@ -4,6 +4,8 @@ import java.util.List;
 
 public class Profissionais {
 	private String nome;
+	private String feedback;
+	private String plano;
 	//Lista de pacientes relacionados a esse profissional!
 	private List<Pacientes> pacientes = new ArrayList<>();
 	
