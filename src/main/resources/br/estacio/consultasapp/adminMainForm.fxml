@@ -1,0 +1,944 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import java.lang.String?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.chart.AreaChart?>
+<?import javafx.scene.chart.BarChart?>
+<?import javafx.scene.chart.CategoryAxis?>
+<?import javafx.scene.chart.NumberAxis?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.shape.Circle?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+
+<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1100.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.estacio.consultasapp.controller.form.types.AdminForm">
+   <children>
+      <AnchorPane fx:id="main_form" prefHeight="200.0" prefWidth="200.0">
+         <children>
+            <BorderPane layoutX="186.0" layoutY="162.0" prefHeight="600.0" prefWidth="1100.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <top>
+                  <AnchorPane prefHeight="40.0" prefWidth="881.0" stylesheets="@style/MainFormDesign.css" BorderPane.alignment="CENTER">
+                     <children>
+                        <AnchorPane prefHeight="40.0" prefWidth="214.0" styleClass="bg-color-1" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+                           <children>
+                              <Label layoutX="45.0" layoutY="12.0" text="Sistema de Consultas" textFill="WHITE">
+                                 <font>
+                                    <Font name="Tahoma" size="13.0" />
+                                 </font>
+                              </Label>
+                              <FontAwesomeIconView fill="WHITE" glyphName="BOOK" layoutX="23.0" layoutY="26.0" size="16.0" />
+                           </children>
+                        </AnchorPane>
+                        <Label alignment="CENTER" layoutX="763.0" layoutY="13.0" text="Seja bem-vindo," AnchorPane.rightAnchor="243.0">
+                           <font>
+                              <Font name="Tahoma" size="13.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="lbl_user_name" layoutX="860.0" layoutY="12.0" prefHeight="19.0" prefWidth="107.0" text="Aaron Yan" AnchorPane.rightAnchor="133.0">
+                           <font>
+                              <Font name="Tahoma Bold" size="13.0" />
+                           </font>
+                        </Label>
+                        <Circle fx:id="circle_pfp" fill="DODGERBLUE" layoutX="988.0" layoutY="21.0" radius="14.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" AnchorPane.rightAnchor="97.0" />
+                        <Label layoutX="1011.0" layoutY="11.0" text="Disponível" AnchorPane.rightAnchor="29.0">
+                           <font>
+                              <Font size="13.0" />
+                           </font>
+                        </Label>
+                        <Circle fill="#06ee38" layoutX="1079.0" layoutY="21.0" radius="4.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" AnchorPane.rightAnchor="17.0" />
+                        <Label fx:id="lbl_date_now" alignment="CENTER_RIGHT" layoutX="486.0" layoutY="11.0" prefHeight="19.0" prefWidth="250.0" text="DD:MM:YYYY" textAlignment="RIGHT" AnchorPane.rightAnchor="364.0">
+                           <font>
+                              <Font name="Tahoma" size="13.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="page_name" layoutX="224.0" layoutY="9.0" prefHeight="19.0" prefWidth="262.0" styleClass="header-1" stylesheets="@style/MainFormDesign.css" text="Dashboard" AnchorPane.leftAnchor="224.0" AnchorPane.topAnchor="9.0">
+                           <font>
+                              <Font name="Tahoma Bold" size="18.0" />
+                           </font>
+                        </Label>
+                     </children>
+                     <styleClass>
+                        <String fx:value="white-bg" />
+                        <String fx:value="border-top" />
+                     </styleClass>
+                  </AnchorPane>
+               </top>
+               <center>
+                  <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+                     <children>
+                        <AnchorPane fx:id="dashboard_form" layoutX="50.0" layoutY="49.0" prefHeight="560.0" prefWidth="886.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                           <children>
+                              <AnchorPane layoutX="14.0" layoutY="14.0" prefHeight="153.0" prefWidth="856.0" stylesheets="@style/MainFormDesign.css" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="16.0" AnchorPane.topAnchor="14.0">
+                                 <styleClass>
+                                    <String fx:value="white-bg" />
+                                    <String fx:value="shadow" />
+                                    <String fx:value="radius" />
+                                 </styleClass>
+                                 <children>
+                                    <ScrollPane layoutX="6.0" prefHeight="154.0" prefWidth="856.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                       <content>
+                                          <AnchorPane prefHeight="153.0" prefWidth="1050.0">
+                                             <children>
+                                                <AnchorPane layoutX="22.0" layoutY="14.0" prefHeight="114.0" prefWidth="240.0" stylesheets="@style/MainFormDesign.css">
+                                                   <styleClass>
+                                                      <String fx:value="bg-color-1" />
+                                                      <String fx:value="radius" />
+                                                   </styleClass>
+                                                   <children>
+                                                      <FontAwesomeIconView fill="WHITE" glyphName="USER_MD" layoutX="14.0" layoutY="78.0" size="5EM" />
+                                                      <Label alignment="CENTER" layoutX="78.0" layoutY="32.0" prefHeight="19.0" prefWidth="135.0" text="Profissionais Ativos" textFill="WHITE">
+                                                         <font>
+                                                            <Font name="Tahoma" size="15.0" />
+                                                         </font>
+                                                      </Label>
+                                                      <Label fx:id="lbl_num_pro" alignment="CENTER" layoutX="80.0" layoutY="63.0" prefHeight="19.0" prefWidth="131.0" text="1" textFill="WHITE">
+                                                         <font>
+                                                            <Font name="Tahoma" size="15.0" />
+                                                         </font>
+                                                      </Label>
+                                                   </children>
+                                                </AnchorPane>
+                                                <AnchorPane layoutX="278.0" layoutY="14.0" prefHeight="114.0" prefWidth="240.0" stylesheets="@style/MainFormDesign.css">
+                                                   <styleClass>
+                                                      <String fx:value="bg-color-1" />
+                                                      <String fx:value="radius" />
+                                                   </styleClass>
+                                                   <children>
+                                                      <FontAwesomeIconView fill="WHITE" glyphName="USERS" layoutX="14.0" layoutY="78.0" size="5EM" />
+                                                      <Label alignment="CENTER" layoutX="88.0" layoutY="32.0" prefHeight="19.0" prefWidth="132.0" text="Total de Pacientes" textFill="WHITE">
+                                                         <font>
+                                                            <Font name="Tahoma" size="15.0" />
+                                                         </font>
+                                                      </Label>
+                                                      <Label fx:id="lbl_total_patient" alignment="CENTER" layoutX="89.0" layoutY="63.0" prefHeight="19.0" prefWidth="131.0" text="1" textFill="WHITE">
+                                                         <font>
+                                                            <Font name="Tahoma" size="15.0" />
+                                                         </font>
+                                                      </Label>
+                                                   </children>
+                                                </AnchorPane>
+                                                <AnchorPane layoutX="534.0" layoutY="14.0" prefHeight="114.0" prefWidth="240.0" stylesheets="@style/MainFormDesign.css">
+                                                   <styleClass>
+                                                      <String fx:value="bg-color-1" />
+                                                      <String fx:value="radius" />
+                                                   </styleClass>
+                                                   <children>
+                                                      <FontAwesomeIconView fill="WHITE" glyphName="USERS" layoutX="14.0" layoutY="78.0" size="5EM" />
+                                                      <Label alignment="CENTER" layoutX="86.0" layoutY="27.0" prefHeight="19.0" prefWidth="132.0" text="Pacientes Ativos" textFill="WHITE">
+                                                         <font>
+                                                            <Font name="Tahoma" size="15.0" />
+                                                         </font>
+                                                      </Label>
+                                                      <Label fx:id="lbl_active_patient" alignment="CENTER" layoutX="87.0" layoutY="58.0" prefHeight="19.0" prefWidth="131.0" text="1" textFill="WHITE">
+                                                         <font>
+                                                            <Font name="Tahoma" size="15.0" />
+                                                         </font>
+                                                      </Label>
+                                                   </children>
+                                                </AnchorPane>
+                                                <AnchorPane layoutX="790.0" layoutY="14.0" prefHeight="114.0" prefWidth="240.0" stylesheets="@style/MainFormDesign.css">
+                                                   <styleClass>
+                                                      <String fx:value="bg-color-1" />
+                                                      <String fx:value="radius" />
+                                                   </styleClass>
+                                                   <children>
+                                                      <FontAwesomeIconView fill="WHITE" glyphName="BOOK" layoutX="14.0" layoutY="78.0" size="5EM" />
+                                                      <Label alignment="CENTER" layoutX="77.0" layoutY="27.0" prefHeight="19.0" prefWidth="163.0" text="Total de Agendamentos" textFill="WHITE">
+                                                         <font>
+                                                            <Font name="Tahoma" size="14.0" />
+                                                         </font>
+                                                      </Label>
+                                                      <Label fx:id="lbl_total_appointments" alignment="CENTER" layoutX="78.0" layoutY="58.0" prefHeight="19.0" prefWidth="131.0" text="1" textFill="WHITE">
+                                                         <font>
+                                                            <Font name="Tahoma" size="15.0" />
+                                                         </font>
+                                                      </Label>
+                                                   </children>
+                                                </AnchorPane>
+                                             </children>
+                                          </AnchorPane>
+                                       </content>
+                                    </ScrollPane>
+                                 </children>
+                              </AnchorPane>
+                              <AnchorPane layoutX="14.0" layoutY="196.0" prefHeight="349.0" prefWidth="856.0" stylesheets="@style/MainFormDesign.css" AnchorPane.bottomAnchor="15.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="16.0" AnchorPane.topAnchor="196.0">
+                                 <styleClass>
+                                    <String fx:value="white-bg" />
+                                    <String fx:value="shadow" />
+                                    <String fx:value="radius" />
+                                 </styleClass>
+                                 <children>
+                                    <AnchorPane layoutX="459.0" layoutY="14.0" prefHeight="158.0" prefWidth="383.0" stylesheets="@style/MainFormDesign.css" AnchorPane.bottomAnchor="177.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="14.0">
+                                       <styleClass>
+                                          <String fx:value="white-bg" />
+                                          <String fx:value="shadow" />
+                                          <String fx:value="radius" />
+                                       </styleClass>
+                                       <children>
+                                          <AreaChart fx:id="dashboard_chart_patient" layoutX="-143.0" layoutY="-140.0" prefHeight="260.0" prefWidth="383.0" title="Número de Pacientes" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                            <xAxis>
+                                              <CategoryAxis side="BOTTOM" />
+                                            </xAxis>
+                                            <yAxis>
+                                              <NumberAxis side="LEFT" />
+                                            </yAxis>
+                                          </AreaChart>
+                                       </children>
+                                    </AnchorPane>
+                                    <AnchorPane layoutX="459.0" layoutY="206.0" prefHeight="129.0" prefWidth="383.0" stylesheets="@style/MainFormDesign.css" AnchorPane.bottomAnchor="14.0" AnchorPane.rightAnchor="14.0">
+                                       <styleClass>
+                                          <String fx:value="white-bg" />
+                                          <String fx:value="shadow" />
+                                          <String fx:value="radius" />
+                                       </styleClass>
+                                       <children>
+                                          <BarChart fx:id="dashboard_chart_appointment" layoutX="-58.0" layoutY="-135.0" prefHeight="265.0" prefWidth="383.0" title="Dados de Agendamentos" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                            <xAxis>
+                                              <CategoryAxis side="BOTTOM" />
+                                            </xAxis>
+                                            <yAxis>
+                                              <NumberAxis side="LEFT" />
+                                            </yAxis>
+                                          </BarChart>
+                                       </children>
+                                    </AnchorPane>
+                                    <AnchorPane layoutX="14.0" layoutY="9.0" prefHeight="325.0" prefWidth="433.0" stylesheets="@style/MainFormDesign.css" AnchorPane.bottomAnchor="15.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="413.0" AnchorPane.topAnchor="13.0">
+                                       <styleClass>
+                                          <String fx:value="white-bg" />
+                                          <String fx:value="shadow" />
+                                          <String fx:value="radius" />
+                                       </styleClass>
+                                       <children>
+                                          <Label layoutX="9.0" layoutY="10.0" prefHeight="16.0" prefWidth="56.0" styleClass="header-1" stylesheets="@style/MainFormDesign.css" text="Agenda">
+                                             <font>
+                                                <Font name="Tahoma" size="14.0" />
+                                             </font>
+                                          </Label>
+                                          <TableView fx:id="dashboard_table" layoutX="4.0" layoutY="35.0" prefHeight="281.0" prefWidth="421.0" stylesheets="@style/MainFormDesign.css" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="4.0" AnchorPane.rightAnchor="4.0" AnchorPane.topAnchor="35.0">
+                                            <columns>
+                                              <TableColumn fx:id="dashboard_appointment_id" prefWidth="50.0" text="ID" />
+                                              <TableColumn fx:id="dashboard_patient" prefWidth="79.0" text="Paciente" />
+                                                <TableColumn fx:id="dashboard_pro" prefWidth="82.0" text="Profissional" />
+                                                <TableColumn fx:id="dashboard_date" prefWidth="73.0" text="Horário" />
+                                                <TableColumn fx:id="dashboard_day" prefWidth="78.0" text="Dia" />
+                                                <TableColumn fx:id="dashboard_stats" prefWidth="83.0" text="Status" />
+                                            </columns>
+                                             <columnResizePolicy>
+                                                <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                                             </columnResizePolicy>
+                                          </TableView>
+                                       </children>
+                                    </AnchorPane>
+                                 </children>
+                              </AnchorPane>
+                           </children>
+                        </AnchorPane>
+                        <AnchorPane fx:id="pro_form" layoutX="145.0" layoutY="61.0" prefHeight="560.0" prefWidth="886.0" styleClass="white-bg" stylesheets="@style/MainFormDesign.css" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                           <children>
+                              <AnchorPane fx:id="pro_list_form" layoutX="185.0" layoutY="64.0" prefHeight="560.0" prefWidth="886.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                 <children>
+                                    <Label layoutX="14.0" layoutY="14.0" styleClass="header-1" stylesheets="@style/MainFormDesign.css" text="Profissionais">
+                                       <font>
+                                          <Font name="Tahoma Bold" size="18.0" />
+                                       </font>
+                                    </Label>
+                                    <TableView fx:id="pro_table" prefHeight="502.0" prefWidth="865.0" stylesheets="@style/MainFormDesign.css" AnchorPane.bottomAnchor="8.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="7.0" AnchorPane.topAnchor="50.0">
+                                      <columns>
+                                        <TableColumn fx:id="pro_table_id" prefWidth="75.0" text="ID" />
+                                        <TableColumn fx:id="pro_table_register_id" prefWidth="104.0" text="ID de Registro" />
+                                          <TableColumn fx:id="pro_table_fullname" prefWidth="128.0" text="Nome Completo" />
+                                          <TableColumn fx:id="pro_table_genre" prefWidth="84.0" text="Gênero" />
+                                          <TableColumn fx:id="pro_table_phone" prefWidth="125.0" text="Número de Contato" />
+                                          <TableColumn fx:id="pro_table_email" minWidth="0.0" prefWidth="97.0" text="E-mail" />
+                                          <TableColumn fx:id="pro_table_status" prefWidth="78.0" text="Status" />
+                                          <TableColumn fx:id="pro_table_address" minWidth="0.0" prefWidth="81.0" text="Endereço" />
+                                          <TableColumn fx:id="pro_table_action" minWidth="0.0" prefWidth="92.0" text="Ação" />
+                                      </columns>
+                                       <columnResizePolicy>
+                                          <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                                       </columnResizePolicy>
+                                    </TableView>
+                                    <Button fx:id="pro_new_btn" layoutX="687.0" layoutY="9.0" mnemonicParsing="false" onAction="#showAndHideList" prefHeight="33.0" prefWidth="192.0" styleClass="login-btn" stylesheets="@style/LoginDesign.css" text="NOVO PROFISSIONAL" AnchorPane.rightAnchor="7.0" AnchorPane.topAnchor="9.0">
+                                       <graphic>
+                                          <FontAwesomeIconView fill="WHITE" glyphName="USER_PLUS" size="1.5em" />
+                                       </graphic>
+                                    </Button>
+                                    <TextField fx:id="pro_search_textfield" layoutX="356.0" layoutY="9.0" prefHeight="33.0" prefWidth="182.0" promptText="Pesquisar" AnchorPane.leftAnchor="356.0" AnchorPane.topAnchor="9.0" />
+                                    <Button fx:id="pro_search_btn" layoutX="541.0" layoutY="9.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="37.0" AnchorPane.leftAnchor="541.0" AnchorPane.topAnchor="9.0">
+                                       <graphic>
+                                          <FontAwesomeIconView glyphName="SEARCH" />
+                                       </graphic>
+                                    </Button>
+                                    <Button fx:id="pro_refresh_btn" layoutX="585.0" layoutY="9.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="34.0" AnchorPane.leftAnchor="585.0" AnchorPane.topAnchor="9.0">
+                                       <graphic>
+                                          <FontAwesomeIconView glyphName="REFRESH" />
+                                       </graphic>
+                                    </Button>
+                                 </children>
+                              </AnchorPane>
+                              <AnchorPane fx:id="pro_new_form" layoutX="224.0" layoutY="80.0" prefHeight="560.0" prefWidth="886.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                 <children>
+                                    <AnchorPane layoutX="14.0" layoutY="25.0" prefHeight="512.0" prefWidth="344.0" stylesheets="@style/MainFormDesign.css" AnchorPane.bottomAnchor="23.0" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="25.0">
+                                       <styleClass>
+                                          <String fx:value="white-bg" />
+                                          <String fx:value="shadow" />
+                                          <String fx:value="radius" />
+                                       </styleClass>
+                                       <children>
+                                          <Label layoutX="14.0" layoutY="14.0" styleClass="header-1" stylesheets="@style/MainFormDesign.css" text="Cadastrar Profissional">
+                                             <font>
+                                                <Font name="Tahoma Bold" size="20.0" />
+                                             </font>
+                                          </Label>
+                                          <Label layoutX="14.0" layoutY="67.0" text="ID de Registro:">
+                                             <font>
+                                                <Font name="Tahoma" size="14.0" />
+                                             </font>
+                                          </Label>
+                                          <TextField fx:id="pro_register_id_textfield" disable="true" editable="false" layoutX="14.0" layoutY="94.0" prefHeight="33.0" prefWidth="316.0" />
+                                          <Label layoutX="14.0" layoutY="138.0" text="Nome Completo:">
+                                             <font>
+                                                <Font name="Tahoma" size="14.0" />
+                                             </font>
+                                          </Label>
+                                          <TextField fx:id="pro_fullname_textfield" layoutX="14.0" layoutY="165.0" prefHeight="33.0" prefWidth="316.0" promptText="Exemplo: Lucas Souza da Silva" styleClass="text-field" stylesheets="@style/LoginDesign.css" />
+                                          <Label layoutX="14.0" layoutY="207.0" text="Senha:">
+                                             <font>
+                                                <Font name="Tahoma" size="14.0" />
+                                             </font>
+                                          </Label>
+                                          <TextField fx:id="pro_password_textfield" layoutX="14.0" layoutY="234.0" prefHeight="33.0" prefWidth="316.0" promptText="Dê uma senha para o profissional" styleClass="text-field" stylesheets="@style/LoginDesign.css" />
+                                          <Label layoutX="14.0" layoutY="275.0" text="E-mail:">
+                                             <font>
+                                                <Font name="Tahoma" size="14.0" />
+                                             </font>
+                                          </Label>
+                                          <TextField fx:id="pro_email_textfield" layoutX="14.0" layoutY="302.0" prefHeight="33.0" prefWidth="316.0" promptText="E-mail do profissional" styleClass="text-field" stylesheets="@style/LoginDesign.css" />
+                                          <Label layoutX="14.0" layoutY="344.0" text="Gênero:">
+                                             <font>
+                                                <Font name="Tahoma" size="14.0" />
+                                             </font>
+                                          </Label>
+                                          <ComboBox fx:id="pro_genre_combobox" layoutX="14.0" layoutY="369.0" prefHeight="33.0" prefWidth="316.0" stylesheets="@style/MainFormDesign.css">
+                                             <cursor>
+                                                <Cursor fx:constant="HAND" />
+                                             </cursor>
+                                             <styleClass>
+                                                <String fx:value="white-bg" />
+                                                <String fx:value="radius" />
+                                                <String fx:value="shadow" />
+                                             </styleClass></ComboBox>
+                                          <Button fx:id="pro_back_btn" layoutX="84.0" layoutY="459.0" mnemonicParsing="false" onAction="#showAndHideList" prefHeight="33.0" prefWidth="85.0" styleClass="login-btn" stylesheets="@style/LoginDesign.css" text="Voltar" />
+                                          <Button fx:id="pro_add_btn" layoutX="176.0" layoutY="459.0" mnemonicParsing="false" onAction="#addDoctorButton" prefHeight="33.0" prefWidth="87.0" styleClass="login-btn" stylesheets="@style/LoginDesign.css" text="Cadastrar" />
+                                       </children>
+                                    </AnchorPane>
+                                    <AnchorPane layoutX="371.0" layoutY="25.0" prefHeight="511.0" prefWidth="504.0" stylesheets="@style/MainFormDesign.css" AnchorPane.bottomAnchor="24.0" AnchorPane.leftAnchor="371.0" AnchorPane.rightAnchor="11.0" AnchorPane.topAnchor="25.0">
+                                       <styleClass>
+                                          <String fx:value="white-bg" />
+                                          <String fx:value="shadow" />
+                                          <String fx:value="radius" />
+                                       </styleClass>
+                                       <children>
+                                          <TableView fx:id="pro_days_table" layoutX="6.0" layoutY="169.0" prefHeight="336.0" prefWidth="492.0" AnchorPane.bottomAnchor="6.0" AnchorPane.leftAnchor="6.0" AnchorPane.rightAnchor="6.0" AnchorPane.topAnchor="169.0">
+                                            <columns>
+                                              <TableColumn fx:id="pro_monday_table" prefWidth="103.0" text="Segunda-feira" />
+                                              <TableColumn fx:id="pro_tuesday_table" prefWidth="84.0" text="Terça-feira" />
+                                                <TableColumn fx:id="pro_wednesday_table" prefWidth="84.0" text="Quarta-feira" />
+                                                <TableColumn fx:id="pro_thursday_table" prefWidth="84.0" text="Quinta-feira" />
+                                                <TableColumn fx:id="pro_friday_table" prefWidth="84.0" text="Sexta-feira" />
+                                            </columns>
+                                             <columnResizePolicy>
+                                                <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                                             </columnResizePolicy>
+                                          </TableView>
+                                          <Label layoutX="166.0" layoutY="55.0" text="Dia:">
+                                             <font>
+                                                <Font name="Tahoma" size="14.0" />
+                                             </font>
+                                          </Label>
+                                          <ComboBox fx:id="pro_day_combobox" layoutX="200.0" layoutY="52.0" prefWidth="150.0" promptText="Dia da Semana" AnchorPane.leftAnchor="200.0" AnchorPane.rightAnchor="154.0">
+                                             <cursor>
+                                                <Cursor fx:constant="HAND" />
+                                             </cursor></ComboBox>
+                                          <Label layoutX="141.0" layoutY="91.0" text="Horário:">
+                                             <font>
+                                                <Font name="Tahoma" size="14.0" />
+                                             </font>
+                                          </Label>
+                                          <ComboBox fx:id="pro_hour_combobox" layoutX="200.0" layoutY="88.0" prefWidth="150.0" AnchorPane.leftAnchor="200.0" AnchorPane.rightAnchor="154.0">
+                                             <cursor>
+                                                <Cursor fx:constant="HAND" />
+                                             </cursor></ComboBox>
+                                          <Button fx:id="pro_day_add_btn" layoutX="186.0" layoutY="126.0" mnemonicParsing="false" onAction="#newHour" prefHeight="25.0" prefWidth="87.0" text="Adicionar" AnchorPane.leftAnchor="186.0">
+                                             <styleClass>
+                                                <String fx:value="btn-1" />
+                                                <String fx:value="bg-color-1" />
+                                             </styleClass>
+                                             <font>
+                                                <Font name="Tahoma" size="14.0" />
+                                             </font>
+                                          </Button>
+                                          <Button fx:id="pro_day_remove_btn" layoutX="275.0" layoutY="126.0" mnemonicParsing="false" onAction="#removeHour" prefHeight="25.0" prefWidth="82.0" text="Remover" AnchorPane.rightAnchor="142.0">
+                                             <styleClass>
+                                                <String fx:value="bg-color-1" />
+                                                <String fx:value="btn-1" />
+                                             </styleClass>
+                                             <font>
+                                                <Font name="Tahoma" size="14.0" />
+                                             </font>
+                                          </Button>
+                                          <Label layoutX="14.0" layoutY="14.0" styleClass="header-1" stylesheets="@style/MainFormDesign.css" text="Horário Disponível">
+                                             <font>
+                                                <Font name="Tahoma Bold" size="20.0" />
+                                             </font>
+                                          </Label>
+                                       </children>
+                                    </AnchorPane>
+                                 </children>
+                              </AnchorPane>
+                           </children>
+                        </AnchorPane>
+                        <AnchorPane fx:id="patient_form" layoutY="4.0" prefHeight="560.0" prefWidth="886.0" styleClass="white-bg" stylesheets="@style/MainFormDesign.css" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                           <children>
+                              <AnchorPane fx:id="patient_list_form" prefHeight="560.0" prefWidth="886.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                 <children>
+                                    <Button fx:id="patient_new_btn" mnemonicParsing="false" onAction="#showAndHideList" prefHeight="33.0" prefWidth="159.0" styleClass="login-btn" stylesheets="@style/LoginDesign.css" text="NOVO PACIENTE" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="9.0">
+                                       <graphic>
+                                          <FontAwesomeIconView fill="WHITE" glyphName="USER_PLUS" size="1.5em" />
+                                       </graphic>
+                                    </Button>
+                                    <Label layoutX="14.0" layoutY="14.0" styleClass="header-1" stylesheets="@style/MainFormDesign.css" text="Pacientes">
+                                       <font>
+                                          <Font name="Tahoma Bold" size="18.0" />
+                                       </font>
+                                    </Label>
+                                    <TableView fx:id="patient_table" prefHeight="502.0" prefWidth="865.0" stylesheets="@style/MainFormDesign.css" AnchorPane.bottomAnchor="8.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="7.0" AnchorPane.topAnchor="50.0">
+                                       <columns>
+                                          <TableColumn fx:id="patient_id" prefWidth="40.0" text="ID" />
+                                          <TableColumn fx:id="patient_register_id" prefWidth="94.0" text="ID de Registro" />
+                                          <TableColumn fx:id="patient_fullname" prefWidth="105.0" text="Nome Completo" />
+                                          <TableColumn fx:id="patient_genre" prefWidth="69.0" text="Gênero" />
+                                          <TableColumn fx:id="patient_phone" prefWidth="105.0" text="Número de Contato" />
+                                          <TableColumn fx:id="patient_address" prefWidth="61.0" text="Endereço" />
+                                          <TableColumn fx:id="patient_diagnosis" prefWidth="83.0" text="Diagnóstico" />
+                                          <TableColumn fx:id="patient_treatment" prefWidth="78.0" text="Tratamento" />
+                                          <TableColumn fx:id="patient_profissional" text="Profissional" />
+                                          <TableColumn fx:id="patient_status" prefWidth="55.0" text="Status" />
+                                          <TableColumn fx:id="patient_action" prefWidth="95.0" text="Ação" />
+                                       </columns>
+                                       <columnResizePolicy>
+                                          <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                                       </columnResizePolicy>
+                                    </TableView>
+                                    <TextField fx:id="patient_search_textfield" layoutX="339.0" layoutY="9.0" prefHeight="33.0" prefWidth="182.0" promptText="Pesquisar" AnchorPane.leftAnchor="339.0" AnchorPane.topAnchor="9.0" />
+                                    <Button fx:id="patient_search_btn" layoutX="527.0" layoutY="9.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="37.0" AnchorPane.leftAnchor="527.0" AnchorPane.topAnchor="9.0">
+                                       <graphic>
+                                          <FontAwesomeIconView glyphName="SEARCH" />
+                                       </graphic>
+                                    </Button>
+                                    <Button fx:id="patient_refresh_btn" layoutX="570.0" layoutY="9.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="34.0" AnchorPane.leftAnchor="570.0" AnchorPane.topAnchor="9.0">
+                                       <graphic>
+                                          <FontAwesomeIconView glyphName="REFRESH" />
+                                       </graphic>
+                                    </Button>
+                                 </children>
+                              </AnchorPane>
+                              <AnchorPane fx:id="patient_new_form" prefHeight="560.0" prefWidth="886.0" visible="false">
+                                 <children>
+                                    <AnchorPane layoutX="8.0" layoutY="5.0" prefHeight="555.0" prefWidth="558.0" stylesheets="@style/MainFormDesign.css" AnchorPane.bottomAnchor="7.0" AnchorPane.leftAnchor="8.0" AnchorPane.rightAnchor="320.0" AnchorPane.topAnchor="5.0">
+                                       <styleClass>
+                                          <String fx:value="white-bg" />
+                                          <String fx:value="radius" />
+                                          <String fx:value="shadow" />
+                                       </styleClass>
+                                       <children>
+                                          <Label layoutX="14.0" layoutY="14.0" styleClass="header-1" stylesheets="@style/MainFormDesign.css" text="Cadastrar Paciente">
+                                             <font>
+                                                <Font name="Tahoma Bold" size="20.0" />
+                                             </font>
+                                          </Label>
+                                          <Label layoutX="14.0" layoutY="55.0" text="Nome Completo">
+                                             <font>
+                                                <Font name="Tahoma" size="14.0" />
+                                             </font>
+                                          </Label>
+                                          <TextField fx:id="patient_name_textfield" layoutX="14.0" layoutY="76.0" prefHeight="25.0" prefWidth="163.0" promptText="Ex: Luiz Souza da Silva" styleClass="text-field" stylesheets="@style/LoginDesign.css" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="76.0" />
+                                          <Label layoutX="378.0" layoutY="55.0" text="Gênero:">
+                                             <font>
+                                                <Font name="Tahoma" size="14.0" />
+                                             </font>
+                                          </Label>
+                                          <ComboBox fx:id="patient_genre_dropdown" layoutX="378.0" layoutY="76.0" prefHeight="25.0" prefWidth="167.0" stylesheets="@style/MainFormDesign.css">
+                                             <styleClass>
+                                                <String fx:value="white-bg" />
+                                                <String fx:value="shadow" />
+                                                <String fx:value="radius" />
+                                             </styleClass></ComboBox>
+                                          <Label layoutX="193.0" layoutY="54.0" text="Data de Nascimento">
+                                             <font>
+                                                <Font name="Tahoma" size="14.0" />
+                                             </font>
+                                          </Label>
+                                          <DatePicker fx:id="patient_birthday_date" layoutX="193.0" layoutY="76.0" />
+                                          <AnchorPane layoutX="14.0" layoutY="158.0" prefHeight="162.0" prefWidth="530.0" stylesheets="@style/MainFormDesign.css" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="158.0">
+                                             <styleClass>
+                                                <String fx:value="shadow" />
+                                                <String fx:value="radius" />
+                                                <String fx:value="white-bg" />
+                                             </styleClass>
+                                             <children>
+                                                <Label layoutX="6.0" layoutY="14.0" styleClass="header-1" stylesheets="@style/MainFormDesign.css" text="Diagnóstico">
+                                                   <font>
+                                                      <Font name="Tahoma Bold" size="15.0" />
+                                                   </font>
+                                                </Label>
+                                                <Label layoutX="6.0" layoutY="43.0" text="Observações">
+                                                   <font>
+                                                      <Font name="Tahoma" size="14.0" />
+                                                   </font>
+                                                </Label>
+                                                <Label layoutX="298.0" layoutY="43.0" text="Exames e Testes">
+                                                   <font>
+                                                      <Font name="Tahoma" size="14.0" />
+                                                   </font>
+                                                </Label>
+                                                <DatePicker fx:id="patient_last_update_date" layoutX="111.0" layoutY="11.0" prefHeight="25.0" prefWidth="156.0" promptText="Última atualização" stylesheets="@style/LoginDesign.css" AnchorPane.leftAnchor="111.0" AnchorPane.topAnchor="11.0" />
+                                                <TextArea fx:id="patient_observations_textfield" layoutX="5.0" layoutY="68.0" prefHeight="85.0" prefWidth="283.0" promptText="Informe detalhadamente do diagnóstico do paciente, podendo incluir: quaisquer condições médicas, possíves lesões, etc." styleClass="text-field" stylesheets="@style/LoginDesign.css" wrapText="true" AnchorPane.bottomAnchor="9.0" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="61.0">
+                                                   <font>
+                                                      <Font name="Tahoma" size="11.0" />
+                                                   </font>
+                                                </TextArea>
+                                                <TextArea fx:id="patient_tests_textfield" layoutX="298.0" layoutY="61.0" prefHeight="93.0" prefWidth="222.0" promptText="Se exames ou testes foram realizados para o diagnóstico, registre os resultados e as datas dos exames. Exemplo: Exame1 - 28/10/2023 às 19:27" styleClass="text-field" stylesheets="@style/LoginDesign.css" wrapText="true" AnchorPane.bottomAnchor="8.0" AnchorPane.leftAnchor="298.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="61.0">
+                                                   <font>
+                                                      <Font name="Tahoma" size="11.0" />
+                                                   </font>
+                                                </TextArea>
+                                             </children>
+                                          </AnchorPane>
+                                          <AnchorPane layoutX="14.0" layoutY="327.0" prefHeight="218.0" prefWidth="530.0" stylesheets="@style/MainFormDesign.css" AnchorPane.bottomAnchor="3.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="327.0">
+                                             <styleClass>
+                                                <String fx:value="shadow" />
+                                                <String fx:value="radius" />
+                                                <String fx:value="white-bg" />
+                                             </styleClass>
+                                             <children>
+                                                <Label layoutX="5.0" layoutY="9.0" styleClass="header-1" stylesheets="@style/MainFormDesign.css" text="Tratamento">
+                                                   <font>
+                                                      <Font name="Tahoma Bold" size="15.0" />
+                                                   </font>
+                                                </Label>
+                                                <Label layoutX="6.0" layoutY="39.0" text="Feedback">
+                                                   <font>
+                                                      <Font name="Tahoma" size="14.0" />
+                                                   </font>
+                                                </Label>
+                                                <Label layoutX="178.0" layoutY="39.0" text="Progresso">
+                                                   <font>
+                                                      <Font name="Tahoma" size="14.0" />
+                                                   </font>
+                                                </Label>
+                                                <DatePicker fx:id="patient_conclusion_date" layoutX="106.0" layoutY="6.0" prefHeight="25.0" prefWidth="158.0" promptText="Data de Conclusão" />
+                                                <TextArea fx:id="patient_feedback_textfield" layoutX="5.0" layoutY="61.0" prefHeight="151.0" prefWidth="161.0" promptText="Informe o feedback do paciente sobre como ele se sente em relação ao tratamento e se há alguma preocupação ou desconforto." styleClass="text-field" stylesheets="@style/LoginDesign.css" wrapText="true" AnchorPane.bottomAnchor="6.0" AnchorPane.leftAnchor="6.0" AnchorPane.topAnchor="61.0">
+                                                   <font>
+                                                      <Font name="Tahoma" size="11.0" />
+                                                   </font>
+                                                </TextArea>
+                                                <TextArea fx:id="patient_progress_textfield" layoutX="178.0" layoutY="62.0" prefHeight="149.0" prefWidth="161.0" promptText="Acompanhe o progresso do paciente em relação aos objetivos de tratamento. Isso pode incluir melhorias na mobilidade, alívio da dor, ganho de força, etc." styleClass="text-field" stylesheets="@style/LoginDesign.css" wrapText="true" AnchorPane.bottomAnchor="6.0" AnchorPane.topAnchor="61.0">
+                                                   <font>
+                                                      <Font name="Tahoma" size="11.0" />
+                                                   </font>
+                                                </TextArea>
+                                                <Label layoutX="355.0" layoutY="39.0" text="Plano">
+                                                   <font>
+                                                      <Font name="Tahoma" size="14.0" />
+                                                   </font>
+                                                </Label>
+                                                <TextArea fx:id="patient_plan_textfield" layoutX="349.0" layoutY="60.0" prefHeight="149.0" prefWidth="167.0" promptText="Descreva o plano de tratamento específico para o paciente, incluindo as técnicas de fisioterapia a serem usadas, a frequência das sessões e a duração estimada do tratamento." styleClass="text-field" stylesheets="@style/LoginDesign.css" wrapText="true" AnchorPane.bottomAnchor="6.0" AnchorPane.leftAnchor="349.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="61.0">
+                                                   <font>
+                                                      <Font name="Tahoma" size="11.0" />
+                                                   </font>
+                                                </TextArea>
+                                             </children>
+                                          </AnchorPane>
+                                          <Button fx:id="patient_confirm_btn" layoutX="475.0" layoutY="11.0" mnemonicParsing="false" onAction="#confirmPatientAdd" prefHeight="31.0" prefWidth="69.0" stylesheets="@style/MainFormDesign.css" text="Confirmar" textFill="WHITE" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="11.0">
+                                             <styleClass>
+                                                <String fx:value="bg-color-1" />
+                                                <String fx:value="shadow" />
+                                                <String fx:value="btn-1" />
+                                             </styleClass>
+                                          </Button>
+                                          <Button fx:id="patient_back_btn" layoutX="394.0" layoutY="11.0" mnemonicParsing="false" onAction="#showAndHideList" prefHeight="31.0" prefWidth="69.0" stylesheets="@style/MainFormDesign.css" text="Voltar" textFill="WHITE" AnchorPane.rightAnchor="95.0" AnchorPane.topAnchor="11.0">
+                                             <styleClass>
+                                                <String fx:value="bg-color-1" />
+                                                <String fx:value="shadow" />
+                                                <String fx:value="btn-1" />
+                                             </styleClass>
+                                          </Button>
+                                          <Label layoutX="14.0" layoutY="104.0" text="Responsável">
+                                             <font>
+                                                <Font name="Tahoma" size="14.0" />
+                                             </font>
+                                          </Label>
+                                          <Label layoutX="193.0" layoutY="104.0" text="Contato (Opcional)">
+                                             <font>
+                                                <Font name="Tahoma" size="14.0" />
+                                             </font>
+                                          </Label>
+                                          <TextField fx:id="patient_address_textfield" layoutX="193.0" layoutY="125.0" prefHeight="26.0" prefWidth="166.0" promptText="Exemplo: Rua Teste 1" styleClass="text-field" stylesheets="@style/LoginDesign.css" AnchorPane.leftAnchor="378.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="125.0" />
+                                          <Label layoutX="378.0" layoutY="104.0" text="Endereço (Opcional)">
+                                             <font>
+                                                <Font name="Tahoma" size="14.0" />
+                                             </font>
+                                          </Label>
+                                          <TextField fx:id="patient_contact_textfield" layoutX="193.0" layoutY="125.0" prefHeight="26.0" prefWidth="173.0" promptText="Número de Celular" styleClass="text-field" stylesheets="@style/LoginDesign.css" />
+                                          <ComboBox fx:id="patient_responsible_dropdown" layoutX="14.0" layoutY="126.0" prefHeight="25.0" prefWidth="167.0" stylesheets="@style/MainFormDesign.css">
+                                             <styleClass>
+                                                <String fx:value="white-bg" />
+                                                <String fx:value="shadow" />
+                                                <String fx:value="radius" />
+                                             </styleClass>
+                                          </ComboBox>
+                                       </children>
+                                    </AnchorPane>
+                                    <AnchorPane layoutX="585.0" layoutY="237.0" prefHeight="316.0" prefWidth="288.0" stylesheets="@style/MainFormDesign.css" AnchorPane.bottomAnchor="7.0" AnchorPane.rightAnchor="13.0" AnchorPane.topAnchor="237.0">
+                                       <styleClass>
+                                          <String fx:value="white-bg" />
+                                          <String fx:value="radius" />
+                                          <String fx:value="shadow" />
+                                       </styleClass>
+                                       <children>
+                                          <Label layoutX="6.0" layoutY="8.0" styleClass="header-1" stylesheets="@style/MainFormDesign.css" text="Informação do Paciente">
+                                             <font>
+                                                <Font name="Tahoma Bold" size="20.0" />
+                                             </font>
+                                          </Label>
+                                          <Label alignment="CENTER_RIGHT" layoutX="14.0" layoutY="108.0" text="Nome do Paciente:" />
+                                          <Label alignment="CENTER_RIGHT" layoutX="23.0" layoutY="134.0" prefHeight="17.0" prefWidth="92.0" text="Gênero:" />
+                                          <Label alignment="CENTER_RIGHT" layoutX="24.0" layoutY="160.0" prefHeight="17.0" prefWidth="92.0" text="Contato:" />
+                                          <Label alignment="CENTER_RIGHT" layoutX="24.0" layoutY="185.0" prefHeight="17.0" prefWidth="92.0" text="Endereço:" />
+                                          <Label fx:id="patient_name_lbl" layoutX="130.0" layoutY="108.0" text="------------" />
+                                          <Label fx:id="patient_genre_lbl" layoutX="130.0" layoutY="134.0" text="------------" />
+                                          <Label fx:id="patient_contact_lbl" layoutX="130.0" layoutY="160.0" text="------------" />
+                                          <Label fx:id="patient_address_lbl" layoutX="130.0" layoutY="186.0" text="------------" />
+                                          <FontAwesomeIconView glyphName="CLIPBOARD" layoutX="154.0" layoutY="244.0" opacity="0.14" size="10em" AnchorPane.bottomAnchor="54.857139587402344" AnchorPane.rightAnchor="14.0" />
+                                          <Button fx:id="patient_add_btn" layoutX="103.0" layoutY="252.0" mnemonicParsing="false" onAction="#addPatientButton" prefHeight="34.0" prefWidth="102.0" stylesheets="@style/LoginDesign.css" text="Adicionar" AnchorPane.bottomAnchor="30.0" AnchorPane.leftAnchor="103.0">
+                                             <graphic>
+                                                <FontAwesomeIconView fill="WHITE" glyphName="PLUS" />
+                                             </graphic>
+                                             <styleClass>
+                                                <String fx:value="shadow" />
+                                                <String fx:value="login-btn" />
+                                             </styleClass>
+                                          </Button>
+                                       </children>
+                                    </AnchorPane>
+                                    <AnchorPane layoutX="585.0" layoutY="5.0" prefHeight="223.0" prefWidth="287.0" stylesheets="@style/MainFormDesign.css" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="5.0">
+                                       <styleClass>
+                                          <String fx:value="white-bg" />
+                                          <String fx:value="radius" />
+                                          <String fx:value="shadow" />
+                                       </styleClass>
+                                       <children>
+                                          <Label layoutX="6.0" layoutY="14.0" styleClass="header-1" stylesheets="@style/MainFormDesign.css" text="Conta do Paciente">
+                                             <font>
+                                                <Font name="Tahoma Bold" size="20.0" />
+                                             </font>
+                                          </Label>
+                                          <Label alignment="CENTER_RIGHT" layoutX="14.0" layoutY="78.0" text="ID do Paciente:" />
+                                          <Label alignment="CENTER_RIGHT" layoutX="14.0" layoutY="129.0" prefHeight="17.0" prefWidth="78.0" text="Responsável:" />
+                                          <Label alignment="CENTER_RIGHT" layoutX="14.0" layoutY="104.0" prefHeight="17.0" prefWidth="78.0" text="Idade:" />
+                                          <Label fx:id="patient_id_lbl" layoutX="104.0" layoutY="78.0" text="------------" />
+                                          <Label fx:id="patient_age_lbl" layoutX="104.0" layoutY="104.0" text="------------" />
+                                          <Label fx:id="patient_responsable_lbl" layoutX="104.0" layoutY="129.0" text="------------" />
+                                          <Label alignment="CENTER_RIGHT" layoutX="3.0" layoutY="153.0" prefHeight="17.0" prefWidth="89.0" text="Última Consulta:" />
+                                          <Label fx:id="patient_last_lbl" layoutX="104.0" layoutY="153.0" text="------------" />
+                                          <FontAwesomeIconView glyphName="USER" layoutX="187.0" layoutY="163.0" opacity="0.58" size="10em" />
+                                       </children>
+                                    </AnchorPane>
+                                 </children>
+                              </AnchorPane>
+                           </children>
+                        </AnchorPane>
+                        <AnchorPane fx:id="appointment_form" prefHeight="560.0" prefWidth="886.0" styleClass="white-bg" stylesheets="@style/MainFormDesign.css" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                           <children>
+                              <AnchorPane fx:id="appointment_new_form" layoutX="96.0" layoutY="80.0" prefHeight="560.0" prefWidth="886.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                 <children>
+                                    <AnchorPane layoutX="281.0" layoutY="12.0" prefHeight="538.0" prefWidth="325.0" stylesheets="@style/MainFormDesign.css" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="281.0" AnchorPane.rightAnchor="280.0" AnchorPane.topAnchor="12.0">
+                                       <styleClass>
+                                          <String fx:value="white-bg" />
+                                          <String fx:value="radius" />
+                                          <String fx:value="shadow" />
+                                       </styleClass>
+                                       <children>
+                                          <Label layoutX="14.0" layoutY="14.0" styleClass="header-1" stylesheets="@style/MainFormDesign.css" text="Cadastrar Consulta">
+                                             <font>
+                                                <Font name="Tahoma Bold" size="20.0" />
+                                             </font>
+                                          </Label>
+                                          <Label layoutX="14.0" layoutY="78.0" text="Nome/ID:">
+                                             <font>
+                                                <Font name="Tahoma" size="14.0" />
+                                             </font>
+                                          </Label>
+                                          <TextField fx:id="appointment_patient_textfield" layoutX="14.0" layoutY="103.0" prefHeight="31.0" prefWidth="207.0" promptText="Coloque o nome completo ou ID do paciente" styleClass="text-field" stylesheets="@style/LoginDesign.css" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="104.0" />
+                                          <Label layoutX="14.0" layoutY="153.0" text="Profissional:">
+                                             <font>
+                                                <Font name="Tahoma" size="14.0" />
+                                             </font>
+                                          </Label>
+                                          <Label layoutX="14.0" layoutY="232.0" text="Data:">
+                                             <font>
+                                                <Font name="Tahoma" size="14.0" />
+                                             </font>
+                                          </Label>
+                                          <DatePicker fx:id="appointment_schedule_date" layoutX="14.0" layoutY="257.0" prefHeight="31.0" prefWidth="298.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="13.0" />
+                                          <Label layoutX="14.0" layoutY="306.0" text="Horários:">
+                                             <font>
+                                                <Font name="Tahoma" size="14.0" />
+                                             </font>
+                                          </Label>
+                                          <Label layoutX="14.0" layoutY="374.0" text="Tipo de Consulta:">
+                                             <font>
+                                                <Font name="Tahoma" size="14.0" />
+                                             </font>
+                                          </Label>
+                                          <Button fx:id="appointment_mark_btn" layoutX="169.0" layoutY="490.0" mnemonicParsing="false" onAction="#markAppointment" prefHeight="34.0" prefWidth="96.0" styleClass="login-btn" stylesheets="@style/LoginDesign.css" text="Marcar" AnchorPane.bottomAnchor="14.0" AnchorPane.rightAnchor="60.0" />
+                                          <ComboBox fx:id="appointment_hour_dropdown" layoutX="14.0" layoutY="332.0" prefHeight="31.0" prefWidth="298.0" promptText="Horários disponíveis" stylesheets="@style/LoginDesign.css" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="13.0">
+                                             <styleClass>
+                                                <String fx:value="white-bg" />
+                                                <String fx:value="shadow" />
+                                             </styleClass>
+                                          </ComboBox>
+                                          <ComboBox fx:id="appointment_type_dropdown" layoutX="14.0" layoutY="399.0" prefHeight="31.0" prefWidth="298.0" stylesheets="@style/LoginDesign.css" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="13.0">
+                                             <styleClass>
+                                                <String fx:value="white-bg" />
+                                                <String fx:value="shadow" />
+                                             </styleClass>
+                                          </ComboBox>
+                                          <Button fx:id="appointment_back_btn" layoutX="61.0" layoutY="490.0" mnemonicParsing="false" onAction="#showAndHideList" prefHeight="34.0" prefWidth="96.0" styleClass="login-btn" stylesheets="@style/LoginDesign.css" text="Voltar" AnchorPane.bottomAnchor="14.0" AnchorPane.leftAnchor="61.0" />
+                                          <Button fx:id="appointment_confirm_btn" layoutX="231.0" layoutY="102.0" mnemonicParsing="false" onAction="#appointmentSearchConfirm" prefHeight="34.0" prefWidth="85.0" styleClass="login-btn" stylesheets="@style/LoginDesign.css" text="Confirmar" />
+                                          <TextField fx:id="appointment_pro_textfield" disable="true" layoutX="14.0" layoutY="178.0" prefHeight="31.0" prefWidth="298.0" styleClass="text-field" stylesheets="@style/LoginDesign.css" />
+                                       </children>
+                                    </AnchorPane>
+                                 </children>
+                              </AnchorPane>
+                              <AnchorPane fx:id="appointment_list_form" layoutX="42.0" layoutY="37.0" prefHeight="560.0" prefWidth="886.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                 <children>
+                                    <Button fx:id="appointment_new_btn" layoutX="708.0" layoutY="11.0" mnemonicParsing="false" onAction="#showAndHideList" prefHeight="33.0" prefWidth="168.0" styleClass="login-btn" stylesheets="@style/LoginDesign.css" text="NOVA CONSULTA" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="11.0">
+                                       <graphic>
+                                          <FontAwesomeIconView fill="WHITE" glyphName="USER_PLUS" size="1.5em" />
+                                       </graphic>
+                                    </Button>
+                                    <TextField fx:id="appointment_search_textfield" layoutX="310.0" layoutY="11.0" prefHeight="33.0" prefWidth="182.0" promptText="Pesquisar" AnchorPane.leftAnchor="310.0" AnchorPane.topAnchor="11.0" />
+                                    <Button fx:id="appointment_search_btn" layoutX="498.0" layoutY="11.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="37.0" AnchorPane.leftAnchor="498.0" AnchorPane.topAnchor="11.0">
+                                       <graphic>
+                                          <FontAwesomeIconView glyphName="SEARCH" />
+                                       </graphic>
+                                    </Button>
+                                    <Button fx:id="appointment_refresh_btn" layoutX="543.0" layoutY="11.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="34.0" AnchorPane.leftAnchor="543.0" AnchorPane.topAnchor="11.0">
+                                       <graphic>
+                                          <FontAwesomeIconView glyphName="REFRESH" />
+                                       </graphic>
+                                    </Button>
+                                    <Label layoutX="14.0" layoutY="16.0" styleClass="header-1" stylesheets="@style/MainFormDesign.css" text="Consultas">
+                                       <font>
+                                          <Font name="Tahoma Bold" size="18.0" />
+                                       </font>
+                                    </Label>
+                                    <TableView fx:id="appointment_table" layoutX="11.0" layoutY="54.0" prefHeight="500.0" prefWidth="865.0" stylesheets="@style/MainFormDesign.css" AnchorPane.bottomAnchor="6.0" AnchorPane.leftAnchor="11.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="54.0">
+                                       <columns>
+                                          <TableColumn fx:id="appointment_id" prefWidth="40.0" text="ID" />
+                                          <TableColumn fx:id="appointment_patient" prefWidth="108.0" text="Paciente" />
+                                          <TableColumn fx:id="appointment_profissional" prefWidth="108.0" text="Profissional" />
+                                          <TableColumn fx:id="appointment_schedule" prefWidth="108.0" text="Data" />
+                                          <TableColumn fx:id="appointment_hour" prefWidth="108.0" text="Horário" />
+                                          <TableColumn fx:id="appointment_consult" prefWidth="108.0" text="Tipo de Consulta" />
+                                          <TableColumn fx:id="appointment_stats" prefWidth="108.0" text="Status" />
+                                          <TableColumn fx:id="appointment_action" prefWidth="108.0" text="Ação" />
+                                       </columns>
+                                       <columnResizePolicy>
+                                          <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                                       </columnResizePolicy>
+                                    </TableView>
+                                 </children>
+                              </AnchorPane>
+                           </children>
+                        </AnchorPane>
+                        <AnchorPane fx:id="secretary_form" layoutX="155.0" layoutY="71.0" prefHeight="560.0" prefWidth="886.0" styleClass="white-bg" stylesheets="@style/MainFormDesign.css" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                           <children>
+                              <AnchorPane fx:id="secretary_list_form" layoutX="185.0" layoutY="64.0" prefHeight="560.0" prefWidth="886.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                 <children>
+                                    <Label layoutX="14.0" layoutY="14.0" styleClass="header-1" stylesheets="@style/MainFormDesign.css" text="Secretárias">
+                                       <font>
+                                          <Font name="Tahoma Bold" size="18.0" />
+                                       </font>
+                                    </Label>
+                                    <TableView fx:id="secretary_table" prefHeight="502.0" prefWidth="865.0" stylesheets="@style/MainFormDesign.css" AnchorPane.bottomAnchor="8.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="7.0" AnchorPane.topAnchor="50.0">
+                                       <columns>
+                                          <TableColumn fx:id="secretary_table_id" prefWidth="75.0" text="ID" />
+                                          <TableColumn fx:id="secretary_table_register_id" prefWidth="104.0" text="ID de Registro" />
+                                          <TableColumn fx:id="secretary_table_fullname" prefWidth="128.0" text="Nome Completo" />
+                                          <TableColumn fx:id="secretary_table_genre" prefWidth="84.0" text="Gênero" />
+                                          <TableColumn fx:id="secretary_table_phone" prefWidth="125.0" text="Número de Contato" />
+                                          <TableColumn fx:id="secretary_table_email" minWidth="0.0" prefWidth="97.0" text="E-mail" />
+                                          <TableColumn fx:id="secretary_table_status" prefWidth="78.0" text="Status" />
+                                          <TableColumn fx:id="secretary_table_address" minWidth="0.0" prefWidth="81.0" text="Endereço" />
+                                          <TableColumn fx:id="secretary_table_action" minWidth="0.0" prefWidth="92.0" text="Ação" />
+                                       </columns>
+                                       <columnResizePolicy>
+                                          <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                                       </columnResizePolicy>
+                                    </TableView>
+                                    <Button fx:id="secretary_new_btn" layoutX="687.0" layoutY="9.0" mnemonicParsing="false" onAction="#showAndHideList" prefHeight="33.0" prefWidth="192.0" styleClass="login-btn" stylesheets="@style/LoginDesign.css" text="NOVA SECRETÁRIA" AnchorPane.rightAnchor="7.0" AnchorPane.topAnchor="9.0">
+                                       <graphic>
+                                          <FontAwesomeIconView fill="WHITE" glyphName="USER_PLUS" size="1.5em" />
+                                       </graphic>
+                                    </Button>
+                                    <TextField fx:id="secretary_search_textfield" layoutX="356.0" layoutY="9.0" prefHeight="33.0" prefWidth="182.0" promptText="Pesquisar" AnchorPane.leftAnchor="356.0" AnchorPane.topAnchor="9.0" />
+                                    <Button fx:id="secretary_search_btn" layoutX="541.0" layoutY="9.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="37.0" AnchorPane.leftAnchor="541.0" AnchorPane.topAnchor="9.0">
+                                       <graphic>
+                                          <FontAwesomeIconView glyphName="SEARCH" />
+                                       </graphic>
+                                    </Button>
+                                    <Button fx:id="secretary_refresh_btn" layoutX="585.0" layoutY="9.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="34.0" AnchorPane.leftAnchor="585.0" AnchorPane.topAnchor="9.0">
+                                       <graphic>
+                                          <FontAwesomeIconView glyphName="REFRESH" />
+                                       </graphic>
+                                    </Button>
+                                 </children>
+                              </AnchorPane>
+                              <AnchorPane fx:id="secretary_new_form" layoutX="224.0" layoutY="80.0" prefHeight="560.0" prefWidth="886.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                 <children>
+                                    <AnchorPane layoutX="276.0" layoutY="33.0" prefHeight="512.0" prefWidth="344.0" stylesheets="@style/MainFormDesign.css" AnchorPane.bottomAnchor="15.0" AnchorPane.leftAnchor="276.0" AnchorPane.rightAnchor="266.0" AnchorPane.topAnchor="33.0">
+                                       <styleClass>
+                                          <String fx:value="white-bg" />
+                                          <String fx:value="shadow" />
+                                          <String fx:value="radius" />
+                                       </styleClass>
+                                       <children>
+                                          <Label layoutX="14.0" layoutY="14.0" styleClass="header-1" stylesheets="@style/MainFormDesign.css" text="Cadastrar Secretária" AnchorPane.leftAnchor="14.0">
+                                             <font>
+                                                <Font name="Tahoma Bold" size="20.0" />
+                                             </font>
+                                          </Label>
+                                          <Label layoutX="14.0" layoutY="67.0" text="ID de Registro:" AnchorPane.leftAnchor="14.0">
+                                             <font>
+                                                <Font name="Tahoma" size="14.0" />
+                                             </font>
+                                          </Label>
+                                          <TextField fx:id="secretary_register_id_textfield" disable="true" editable="false" layoutX="14.0" layoutY="94.0" prefHeight="33.0" prefWidth="316.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="14.0" />
+                                          <Label layoutX="14.0" layoutY="138.0" text="Nome Completo:" AnchorPane.leftAnchor="14.0">
+                                             <font>
+                                                <Font name="Tahoma" size="14.0" />
+                                             </font>
+                                          </Label>
+                                          <TextField fx:id="secretary_fullname_textfield" layoutX="14.0" layoutY="165.0" prefHeight="33.0" prefWidth="316.0" promptText="Exemplo: Lucas Souza da Silva" styleClass="text-field" stylesheets="@style/LoginDesign.css" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="14.0" />
+                                          <Label layoutX="14.0" layoutY="207.0" text="Senha:" AnchorPane.leftAnchor="14.0">
+                                             <font>
+                                                <Font name="Tahoma" size="14.0" />
+                                             </font>
+                                          </Label>
+                                          <TextField fx:id="secretary_password_textfield" layoutX="14.0" layoutY="234.0" prefHeight="33.0" prefWidth="316.0" promptText="Dê uma senha para o profissional" styleClass="text-field" stylesheets="@style/LoginDesign.css" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="14.0" />
+                                          <Label layoutX="14.0" layoutY="275.0" text="E-mail:" AnchorPane.leftAnchor="14.0">
+                                             <font>
+                                                <Font name="Tahoma" size="14.0" />
+                                             </font>
+                                          </Label>
+                                          <TextField fx:id="secretary_email_textfield" layoutX="14.0" layoutY="302.0" prefHeight="33.0" prefWidth="316.0" promptText="E-mail do profissional" styleClass="text-field" stylesheets="@style/LoginDesign.css" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="14.0" />
+                                          <Label layoutX="14.0" layoutY="344.0" text="Gênero:" AnchorPane.leftAnchor="14.0">
+                                             <font>
+                                                <Font name="Tahoma" size="14.0" />
+                                             </font>
+                                          </Label>
+                                          <ComboBox fx:id="secretary_genre_combobox" layoutX="14.0" layoutY="369.0" prefHeight="33.0" prefWidth="316.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="14.0" />
+                                          <Button fx:id="secretary_back_btn" layoutX="84.0" layoutY="459.0" mnemonicParsing="false" onAction="#showAndHideList" prefHeight="33.0" prefWidth="85.0" styleClass="login-btn" stylesheets="@style/LoginDesign.css" text="Voltar" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="84.0" />
+                                          <Button fx:id="secretary_add_btn" layoutX="178.0" layoutY="459.0" mnemonicParsing="false" onAction="#addSecretaryButton" prefHeight="33.0" prefWidth="87.0" styleClass="login-btn" stylesheets="@style/LoginDesign.css" text="Cadastrar" AnchorPane.bottomAnchor="20.0" AnchorPane.rightAnchor="79.0" />
+                                       </children>
+                                    </AnchorPane>
+                                 </children>
+                              </AnchorPane>
+                           </children>
+                        </AnchorPane>
+                     </children>
+                  </AnchorPane>
+               </center>
+               <left>
+                  <AnchorPane prefHeight="560.0" prefWidth="214.0" styleClass="bg-color-1" stylesheets="@style/MainFormDesign.css" BorderPane.alignment="CENTER">
+                     <children>
+                        <FontAwesomeIconView fill="WHITE" glyphName="USER" layoutX="86.0" layoutY="92.0" size="5em" />
+                        <Label layoutX="10.0" layoutY="141.0" text="Admin ID:" textFill="WHITE">
+                           <font>
+                              <Font name="Tahoma" size="15.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="lbl_user_id" layoutX="84.0" layoutY="141.0" prefHeight="17.0" prefWidth="121.0" text="1" textFill="WHITE">
+                           <font>
+                              <Font name="Tahoma Bold" size="14.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="8.0" layoutY="116.0" text="Username:" textFill="WHITE">
+                           <font>
+                              <Font name="Tahoma" size="15.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="lbl_username" layoutX="83.0" layoutY="117.0" prefHeight="17.0" prefWidth="121.0" text="admin" textFill="WHITE">
+                           <font>
+                              <Font name="Tahoma Bold" size="14.0" />
+                           </font>
+                        </Label>
+                        <Line endX="96.0" layoutX="106.0" layoutY="176.0" startX="-96.0" stroke="WHITE" />
+                        <Button fx:id="btn_dashboard" layoutX="7.0" layoutY="195.0" mnemonicParsing="false" onAction="#switchForm" prefHeight="40.0" prefWidth="200.0" styleClass="nav-btn-1" stylesheets="@style/MainFormDesign.css" text="Dashboard">
+                           <graphic>
+                              <FontAwesomeIconView glyphName="DASHBOARD" size="1.5em" />
+                           </graphic>
+                        </Button>
+                        <Button fx:id="btn_pro" layoutX="7.0" layoutY="240.0" mnemonicParsing="false" onAction="#switchForm" prefHeight="40.0" prefWidth="200.0" styleClass="nav-btn-1" stylesheets="@style/MainFormDesign.css" text="Profissionais">
+                           <graphic>
+                              <FontAwesomeIconView glyphName="USER_MD" size="1.5em" />
+                           </graphic>
+                        </Button>
+                        <Button fx:id="btn_secretary" layoutX="7.0" layoutY="286.0" mnemonicParsing="false" onAction="#switchForm" prefHeight="40.0" prefWidth="200.0" styleClass="nav-btn-1" stylesheets="@style/MainFormDesign.css" text="Secretárias">
+                           <graphic>
+                              <FontAwesomeIconView glyphName="USERS" size="1.5em" />
+                           </graphic>
+                        </Button>
+                        <Button fx:id="btn_appointment" layoutX="8.0" layoutY="377.0" mnemonicParsing="false" onAction="#switchForm" prefHeight="40.0" prefWidth="200.0" styleClass="nav-btn-1" stylesheets="@style/MainFormDesign.css" text="Consultas">
+                           <graphic>
+                              <FontAwesomeIconView glyphName="BOOK" size="1.5em" />
+                           </graphic>
+                        </Button>
+                        <Button fx:id="btn_report" layoutX="7.0" layoutY="423.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="200.0" styleClass="nav-btn-1" stylesheets="@style/MainFormDesign.css" text="Relatórios">
+                           <graphic>
+                              <FontAwesomeIconView glyphName="CLIPBOARD" size="1.5em" />
+                           </graphic>
+                        </Button>
+                        <Button fx:id="btn_config" layoutX="8.0" layoutY="470.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="200.0" styleClass="nav-btn-1" stylesheets="@style/MainFormDesign.css" text="Configuração">
+                           <graphic>
+                              <FontAwesomeIconView glyphName="COG" size="1.5em" />
+                           </graphic>
+                        </Button>
+                        <Button fx:id="btn_pacient" layoutX="8.0" layoutY="331.0" mnemonicParsing="false" onAction="#switchForm" prefHeight="40.0" prefWidth="200.0" styleClass="nav-btn-1" stylesheets="@style/MainFormDesign.css" text="Pacientes">
+                           <graphic>
+                              <FontAwesomeIconView glyphName="USERS" size="1.5em" />
+                           </graphic>
+                        </Button>
+                     </children>
+                  </AnchorPane>
+               </left>
+            </BorderPane>
+         </children>
+      </AnchorPane>
+   </children>
+</StackPane>
