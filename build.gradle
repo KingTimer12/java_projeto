@@ -28,7 +28,7 @@ tasks.withType(JavaCompile) {
 
 application {
   mainModule = 'br.estacio.consultasapp'
-  mainClass = 'br.estacio.consultasapp.HelloApplication'
+  mainClass = 'br.estacio.consultasapp.Main'
 }
 
 javafx {
@@ -60,10 +60,20 @@ dependencies {
   testCompileOnly 'org.projectlombok:lombok:1.18.28'
   testAnnotationProcessor 'org.projectlombok:lombok:1.18.28'
 
-  implementation 'com.github.KingTimer12:CoreDB:1.1.3'
+  implementation 'com.github.KingTimer12:CoreDB:1.1.4.1'
 
   testImplementation("org.junit.jupiter:junit-jupiter-api:${junitVersion}")
   testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:${junitVersion}")
+}
+
+jar {
+  manifest {
+    attributes 'Main-Class': 'br.estacio.consultasapp'
+  }
+
+  from {
+    configurations.runtimeClasspath.collect {it.isDirectory() ? it : zipTree(it)}
+  }
 }
 
 test {

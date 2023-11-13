@@ -4,24 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="00ad0853-d299-4ee3-9f47-99c421240c28" name="Changes" comment="Finalizado todos os cadastros">
-      <change afterPath="$PROJECT_DIR$/src/main/java/br/estacio/consultasapp/user/enums/Consults.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/br/estacio/consultasapp/user/enums/StatusAppointment.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/br/estacio/consultasapp/user/interfaces/IdInterface.java" afterDir="false" />
+    <list default="true" id="00ad0853-d299-4ee3-9f47-99c421240c28" name="Changes" comment="As interfaces que faltavam">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/br/estacio/consultasapp/controller/form/FormController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/estacio/consultasapp/controller/form/FormController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/br/estacio/consultasapp/controller/form/types/AdminForm.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/estacio/consultasapp/controller/form/types/AdminForm.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/br/estacio/consultasapp/controller/login/types/DoctorLogin.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/estacio/consultasapp/controller/login/types/DoctorLogin.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/br/estacio/consultasapp/user/dao/AppointmentDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/estacio/consultasapp/user/dao/AppointmentDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/br/estacio/consultasapp/user/dao/DiagnosisDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/estacio/consultasapp/user/dao/DiagnosisDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/br/estacio/consultasapp/user/dao/DoctorDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/estacio/consultasapp/user/dao/DoctorDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/br/estacio/consultasapp/user/dao/PatientDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/estacio/consultasapp/user/dao/PatientDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/br/estacio/consultasapp/user/dao/SecretaryDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/estacio/consultasapp/user/dao/SecretaryDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/br/estacio/consultasapp/user/dao/TimeDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/estacio/consultasapp/user/dao/TimeDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/br/estacio/consultasapp/user/dao/TreatmentDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/estacio/consultasapp/user/dao/TreatmentDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/br/estacio/consultasapp/user/enums/Status.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/estacio/consultasapp/user/enums/Status.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -109,6 +94,58 @@
       <recent name="br.estacio.consultasapp.controller" />
     </key>
   </component>
+  <component name="RunManager" selected="Gradle.ConsultasApp [run]">
+    <configuration name="ConsultasApp [build]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value="build" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <RunAsTest>false</RunAsTest>
+      <method v="2" />
+    </configuration>
+    <configuration name="ConsultasApp [run]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value="run" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <RunAsTest>false</RunAsTest>
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Gradle.ConsultasApp [run]" />
+        <item itemvalue="Gradle.ConsultasApp [build]" />
+      </list>
+    </recent_temporary>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -134,14 +171,31 @@
       <option name="project" value="LOCAL" />
       <updated>1699309838842</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Finalizado todos os cadastros">
+      <option name="closed" value="true" />
+      <created>1699837218686</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1699837218686</updated>
+    </task>
+    <task id="LOCAL-00004" summary="As interfaces que faltavam">
+      <option name="closed" value="true" />
+      <created>1699910061081</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1699910061081</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Última atualização pra mexer amanhã na aula, talvez" />
     <MESSAGE value="Cadastro de profissional finalizado" />
     <MESSAGE value="Finalizado todos os cadastros" />
-    <option name="LAST_COMMIT_MESSAGE" value="Finalizado todos os cadastros" />
+    <MESSAGE value="As interfaces que faltavam" />
+    <option name="LAST_COMMIT_MESSAGE" value="As interfaces que faltavam" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
