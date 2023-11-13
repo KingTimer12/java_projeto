@@ -12,15 +12,20 @@ import br.estacio.consultasapp.handler.Manager;
 import br.estacio.consultasapp.user.User;
 import br.estacio.consultasapp.user.enums.Genders;
 import br.estacio.consultasapp.user.enums.Status;
+import br.estacio.consultasapp.user.interfaces.IdInterface;
 import lombok.Builder;
 import lombok.Getter;
+import lombok.Setter;
 
 import java.util.Date;
+import java.util.List;
+import java.util.Optional;
 
+@Setter
 @Getter
 @Builder
 @TableName(name = "patients")
-public class PatientDAO extends HandlerDAO {
+public class PatientDAO extends HandlerDAO implements IdInterface {
 
     @ColumnRow
     @PrimaryKeyAutoIncrement
@@ -28,6 +33,9 @@ public class PatientDAO extends HandlerDAO {
 
     @ColumnRow(field = "full_name", typeField = TypeField.VARCHAR, size = 100)
     private String fullName;
+
+    @ColumnRow(field = "patient_id", typeField = TypeField.VARCHAR, size = 100)
+    private String patientId;
 
     @ColumnRow(typeField = TypeField.VARCHAR, size = 50)
     private Genders gender;
@@ -54,6 +62,9 @@ public class PatientDAO extends HandlerDAO {
     private int doctorId;
 
     @ColumnRow
+    private Date birthday;
+
+    @ColumnRow
     private Date createdAt;
 
     @ColumnRow
@@ -62,30 +73,48 @@ public class PatientDAO extends HandlerDAO {
     private DiagnosisDAO diagnosis;
     private TreatmentDAO treatment;
 
-    public DiagnosisDAO diagnosis(DiagnosisDAO diagnosis) {
-        if (this.diagnosis == null && diagnosis != null) {
-            return this.diagnosis = diagnosis;
+    public String getDoctorName(List<DoctorDAO> list) {
+        Optional<String> doctorName = list.stream()
+                .filter(doctorDAO -> doctorDAO.getId() == this.doctorId)
+                .findAny().map(DoctorDAO::getFullName);
+        return doctorName.orElse("Desconhecido");
+    }
+
+    public DiagnosisDAO saveDiagnosis(String comments, String exams, Date updatedAt) {
+        if (id == 0) {
+            loadPatientId();
         }
-        this.diagnosis = DiagnosisDAO.builder().id(diagnosisId).build();
-        this.diagnosis.load();
+        this.diagnosis = this.diagnosis == null ? DiagnosisDAO.builder().patientId(id).build() : this.diagnosis;
+        this.diagnosis.setComments(comments);
+        this.diagnosis.setExams(exams);
+        this.diagnosis.setUpdatedAt(updatedAt);
+        this.diagnosis.save();
         return this.diagnosis;
     }
 
-    public TreatmentDAO treatment(TreatmentDAO treatment) {
-        if (this.treatment == null && treatment != null) {
-            return this.treatment = treatment;
+    public TreatmentDAO saveTreatment(String plan, String feedback, String progress, Date conclusionAt) {
+        if (id == 0) {
+            loadPatientId();
         }
-        this.treatment = TreatmentDAO.builder().id(treatmentId).build();
-        this.treatment.load();
+        this.treatment = this.treatment == null ? TreatmentDAO.builder().patientId(id).build() : this.treatment;
+        this.treatment.setPlan(plan);
+        this.treatment.setFeedback(feedback);
+        this.treatment.setProgress(progress);
+        this.treatment.setConclusionAt(conclusionAt);
+        this.treatment.save();
         return this.treatment;
     }
 
     public void save() {
-        super.save(Rows.of("full_name", this.fullName));
+        super.save(Rows.of("patient_id", this.patientId));
     }
 
     public void load() {
         super.load(Rows.of("id", this.id));
+    }
+
+    public void loadPatientId() {
+        super.load(Rows.of("patient_id", this.patientId));
     }
 
     @Override
@@ -98,4 +127,8 @@ public class PatientDAO extends HandlerDAO {
         return this;
     }
 
+    @Override
+    public String getOtherId() {
+        return patientId;
+    }
 }

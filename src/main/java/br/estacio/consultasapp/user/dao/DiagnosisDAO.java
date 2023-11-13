@@ -10,9 +10,11 @@ import br.estacio.consultasapp.database.DatabaseManager;
 import br.estacio.consultasapp.handler.Manager;
 import lombok.Builder;
 import lombok.Getter;
+import lombok.Setter;
 
 import java.util.Date;
 
+@Setter
 @Getter
 @Builder
 @TableName(name = "diagnosis")
@@ -24,7 +26,7 @@ public class DiagnosisDAO extends HandlerDAO {
 
     @ColumnRow(field = "patient_id")
     private int patientId;
-    @ColumnRow
+    @ColumnRow(isNull = true)
     private Date updatedAt;
     @ColumnRow
     private String comments;
@@ -36,7 +38,7 @@ public class DiagnosisDAO extends HandlerDAO {
     }
 
     public void load() {
-        super.load(Rows.of("id", this.id));
+        super.load(Rows.of("patient_id", this.patientId));
     }
 
     @Override

@@ -8,9 +8,12 @@ import br.com.timer.objects.HandlerDAO;
 import br.com.timer.objects.rows.Rows;
 import br.estacio.consultasapp.database.DatabaseManager;
 import br.estacio.consultasapp.handler.Manager;
+import br.estacio.consultasapp.user.enums.Consults;
 import br.estacio.consultasapp.user.enums.Status;
+import br.estacio.consultasapp.user.enums.StatusAppointment;
 import lombok.Builder;
 import lombok.Getter;
+import lombok.extern.apachecommons.CommonsLog;
 
 import java.util.Date;
 
@@ -31,8 +34,12 @@ public class AppointmentDAO extends HandlerDAO {
     private Date consultationDate;
     @ColumnRow(field = "consultation_hour")
     private String consultationHour;
+    @ColumnRow(field = "consult")
+    private Consults consultType;
     @ColumnRow
-    private Status status;
+    private StatusAppointment status;
+    @ColumnRow
+    private Date createdAt;
 
     private String patientName;
     private String doctorName;
@@ -54,7 +61,12 @@ public class AppointmentDAO extends HandlerDAO {
     }
 
     public void load() {
-        super.load(Rows.of("id", this.id));
+        super.load(Rows.of("id", id));
+    }
+
+    public void loads() {
+        super.load(Rows.of("patient_id", patientId),
+                Rows.of("doctor_id", doctorId));
     }
 
     @Override

@@ -117,7 +117,7 @@ public class DoctorLogin extends LoginController {
                 .fullName(register_fullname.getText())
                 .password(register_password.getText())
                 .gender(Genders.NONE)
-                .status(Status.CONFIRM)
+                .status(Status.DISABLE)
                 .build();
         doctor.save();
         AlertMessage.successMessage("Conta registrada, agora espere a confirmação do administrador.");

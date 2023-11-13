@@ -13,6 +13,7 @@ import br.estacio.consultasapp.user.User;
 import br.estacio.consultasapp.user.enums.Days;
 import br.estacio.consultasapp.user.enums.Genders;
 import br.estacio.consultasapp.user.enums.Status;
+import br.estacio.consultasapp.user.interfaces.IdInterface;
 import lombok.*;
 
 import java.util.*;
@@ -21,7 +22,7 @@ import java.util.*;
 @Setter
 @Builder
 @TableName(name = "doctors")
-public class DoctorDAO extends HandlerDAO implements User {
+public class DoctorDAO extends HandlerDAO implements User, IdInterface {
 
     @ColumnRow
     @PrimaryKeyAutoIncrement
@@ -90,27 +91,28 @@ public class DoctorDAO extends HandlerDAO implements User {
         return timeDAO;
     }
 
-    private void loadTime() {
+    public void loadTime() {
         if (available.isEmpty()) {
             for (Days day : Days.values()) {
                 available.put(day, new ArrayList<>());
             }
         }
+        System.out.println(timeId);
         TimeDAO timeDAO = TimeDAO.builder().id(timeId).build();
         timeDAO.load();
         if (timeDAO.getMonday() != null && this.available.get(Days.MONDAY).isEmpty()) {
             this.available.put(Days.MONDAY, List.of(timeDAO.getMonday().split(";")));
         }
-        if (timeDAO.getTuesday() != null && this.available.get(Days.MONDAY).isEmpty()) {
+        if (timeDAO.getTuesday() != null && this.available.get(Days.TUESDAY).isEmpty()) {
             this.available.put(Days.TUESDAY, List.of(timeDAO.getTuesday().split(";")));
         }
-        if (timeDAO.getWednesday() != null && this.available.get(Days.MONDAY).isEmpty()) {
+        if (timeDAO.getWednesday() != null && this.available.get(Days.WEDNESDAY).isEmpty()) {
             this.available.put(Days.WEDNESDAY, List.of(timeDAO.getWednesday().split(";")));
         }
-        if (timeDAO.getThursday() != null && this.available.get(Days.MONDAY).isEmpty()) {
+        if (timeDAO.getThursday() != null && this.available.get(Days.THURSDAY).isEmpty()) {
             this.available.put(Days.THURSDAY, List.of(timeDAO.getThursday().split(";")));
         }
-        if (timeDAO.getFriday() != null && this.available.get(Days.MONDAY).isEmpty()) {
+        if (timeDAO.getFriday() != null && this.available.get(Days.FRIDAY).isEmpty()) {
             this.available.put(Days.FRIDAY, List.of(timeDAO.getFriday().split(";")));
         }
     }
@@ -139,4 +141,8 @@ public class DoctorDAO extends HandlerDAO implements User {
         return this;
     }
 
+    @Override
+    public String getOtherId() {
+        return doctorId;
+    }
 }

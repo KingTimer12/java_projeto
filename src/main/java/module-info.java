@@ -9,6 +9,7 @@ module br.estacio.consultasapp {
     requires com.jfoenix;
     requires com.fasterxml.jackson.core;
     requires com.fasterxml.jackson.databind;
+    requires java.sql;
 
     requires br.com.timer;
 
@@ -35,6 +36,7 @@ module br.estacio.consultasapp {
     //exports br.estacio.consultasapp.utils;
 
     exports br.estacio.consultasapp.user;
+    exports br.estacio.consultasapp.user.interfaces;
     exports br.estacio.consultasapp.user.dao;
     exports br.estacio.consultasapp.user.enums;
 }

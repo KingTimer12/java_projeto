@@ -12,6 +12,7 @@ import br.estacio.consultasapp.handler.Manager;
 import br.estacio.consultasapp.user.User;
 import br.estacio.consultasapp.user.enums.Genders;
 import br.estacio.consultasapp.user.enums.Status;
+import br.estacio.consultasapp.user.interfaces.IdInterface;
 import lombok.Builder;
 import lombok.Getter;
 
@@ -20,7 +21,7 @@ import java.util.Date;
 @Getter
 @Builder
 @TableName(name = "secretaries")
-public class SecretaryDAO extends HandlerDAO implements User {
+public class SecretaryDAO extends HandlerDAO implements User, IdInterface {
 
     @ColumnRow
     @PrimaryKeyAutoIncrement
@@ -68,6 +69,15 @@ public class SecretaryDAO extends HandlerDAO implements User {
 
     public void load() {
         super.load(Rows.of("id", this.id));
+    }
+
+    public void loadRegisterId() {
+        super.load(Rows.of("secretary_id", this.secretaryId));
+    }
+
+    @Override
+    public String getOtherId() {
+        return secretaryId;
     }
 
     @Override

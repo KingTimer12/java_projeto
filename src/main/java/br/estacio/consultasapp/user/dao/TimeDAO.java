@@ -42,6 +42,10 @@ public class TimeDAO extends HandlerDAO {
     }
 
     public void load() {
+        super.load(Rows.of("id", id));
+    }
+
+    public void loadDoctorId() {
         super.load(Rows.of("doctor_id", doctorId));
     }
 
