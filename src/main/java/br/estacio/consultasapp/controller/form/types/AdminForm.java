@@ -1,425 +1,82 @@
 package br.estacio.consultasapp.controller.form.types;
 
-import br.com.timer.objects.data.types.ListData;
 import br.estacio.consultasapp.controller.form.FormController;
-import br.estacio.consultasapp.database.DatabaseManager;
-import br.estacio.consultasapp.handler.Manager;
 import br.estacio.consultasapp.user.dao.*;
 import br.estacio.consultasapp.user.enums.*;
 import br.estacio.consultasapp.utils.AlertMessage;
-import br.estacio.consultasapp.utils.WeeklySchedule;
-import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.*;
-import javafx.scene.layout.AnchorPane;
-import javafx.util.StringConverter;
+import javafx.scene.control.Button;
+import javafx.scene.paint.ImagePattern;
+import javafx.stage.FileChooser;
 
+import java.io.File;
 import java.net.URL;
 import java.text.SimpleDateFormat;
-import java.time.*;
-import java.time.format.DateTimeFormatter;
+import java.time.DayOfWeek;
+import java.time.LocalDate;
+import java.time.Period;
+import java.time.ZoneId;
 import java.util.*;
-import java.util.stream.Stream;
 
 public class AdminForm extends FormController {
 
-    @FXML
-    private Button pro_add_btn;
-
-    @FXML
-    private Button pro_back_btn;
-
-    @FXML
-    private TextField pro_email_textfield;
-
-    @FXML
-    private AnchorPane pro_form;
-
-    @FXML
-    private TextField pro_fullname_textfield;
-
-    @FXML
-    private ComboBox<String> pro_genre_combobox;
-
-    @FXML
-    private AnchorPane pro_list_form;
-
-    @FXML
-    private Button pro_new_btn;
-
-    @FXML
-    private AnchorPane pro_new_form;
-
-    @FXML
-    private TextField pro_password_textfield;
-
-    @FXML
-    private Button pro_refresh_btn;
-
-    @FXML
-    private TextField pro_register_id_textfield;
-
-    @FXML
-    private Button pro_search_btn;
-
-    @FXML
-    private TextField pro_search_textfield;
-
-    @FXML
-    private TableView<DoctorDAO> pro_table;
-
-    @FXML
-    private TableColumn<?, ?> pro_table_action;
-
-    @FXML
-    private TableColumn<DoctorDAO, String> pro_table_address;
-
-    @FXML
-    private TableColumn<DoctorDAO, String> pro_table_email;
-
-    @FXML
-    private TableColumn<DoctorDAO, String> pro_table_fullname;
-
-    @FXML
-    private TableColumn<DoctorDAO, String> pro_table_genre;
-
-    @FXML
-    private TableColumn<DoctorDAO, String> pro_table_id;
-
-    @FXML
-    private TableColumn<DoctorDAO, String> pro_table_phone;
-
-    @FXML
-    private TableColumn<DoctorDAO, String> pro_table_register_id;
-
-    @FXML
-    private TableColumn<DoctorDAO, String> pro_table_status;
-
-    @FXML
-    private Button pro_day_add_btn;
-
-    @FXML
-    private ComboBox<String> pro_hour_combobox;
-
-    @FXML
-    private ComboBox<String> pro_day_combobox;
-
-    @FXML
-    private Button pro_day_remove_btn;
-
-    @FXML
-    private TableView<WeeklySchedule> pro_days_table;
-
-    @FXML
-    private TableColumn<WeeklySchedule, String> pro_monday_table;
-
-    @FXML
-    private TableColumn<WeeklySchedule, String> pro_tuesday_table;
-
-    @FXML
-    private TableColumn<WeeklySchedule, String> pro_wednesday_table;
-
-    @FXML
-    private TableColumn<WeeklySchedule, String> pro_thursday_table;
-
-    @FXML
-    private TableColumn<WeeklySchedule, String> pro_friday_table;
-
-    @FXML
-    private Button btn_pro;
-
-    //Secretary -- START
-    @FXML
-    private Button btn_secretary;
-
-    @FXML
-    private Button secretary_add_btn;
-
-    @FXML
-    private Button secretary_back_btn;
-
-    @FXML
-    private TextField secretary_email_textfield;
-
-    @FXML
-    private AnchorPane secretary_form;
-
-    @FXML
-    private TextField secretary_fullname_textfield;
-
-    @FXML
-    private ComboBox<String> secretary_genre_combobox;
-
-    @FXML
-    private AnchorPane secretary_list_form;
-
-    @FXML
-    private Button secretary_new_btn;
-
-    @FXML
-    private AnchorPane secretary_new_form;
-
-    @FXML
-    private TextField secretary_password_textfield;
-
-    @FXML
-    private Button secretary_refresh_btn;
-
-    @FXML
-    private TextField secretary_register_id_textfield;
-
-    @FXML
-    private Button secretary_search_btn;
-
-    @FXML
-    private TextField secretary_search_textfield;
-
-    @FXML
-    private TableView<SecretaryDAO> secretary_table;
-
-    @FXML
-    private TableColumn<?, ?> secretary_table_action;
-
-    @FXML
-    private TableColumn<SecretaryDAO, String> secretary_table_address;
-
-    @FXML
-    private TableColumn<SecretaryDAO, String> secretary_table_email;
-
-    @FXML
-    private TableColumn<SecretaryDAO, String> secretary_table_fullname;
-
-    @FXML
-    private TableColumn<SecretaryDAO, String> secretary_table_genre;
-
-    @FXML
-    private TableColumn<SecretaryDAO, String> secretary_table_id;
-
-    @FXML
-    private TableColumn<SecretaryDAO, String> secretary_table_phone;
-
-    @FXML
-    private TableColumn<SecretaryDAO, String> secretary_table_register_id;
-
-    @FXML
-    private TableColumn<SecretaryDAO, String> secretary_table_status;
-    //Secretary -- END
-
-    //Appointment -- START
-    @FXML
-    private TableColumn<?, ?> appointment_action;
-
-    @FXML
-    private Button appointment_back_btn;
-
-    @FXML
-    private TableColumn<AppointmentDAO, String> appointment_hour;
-
-    @FXML
-    private ComboBox<String> appointment_hour_dropdown;
-
-    @FXML
-    private TableColumn<AppointmentDAO, String> appointment_id;
-
-    @FXML
-    private AnchorPane appointment_list_form;
-
-    @FXML
-    private Button appointment_mark_btn;
-
-    @FXML
-    private Button appointment_confirm_btn;
-
-    @FXML
-    private Button appointment_new_btn;
-
-    @FXML
-    private AnchorPane appointment_new_form;
-
-    @FXML
-    private TableColumn<AppointmentDAO, String> appointment_patient;
-
-    @FXML
-    private TextField appointment_patient_textfield;
-
-    @FXML
-    private TextField appointment_pro_textfield;
-
-    @FXML
-    private TableColumn<AppointmentDAO, String> appointment_profissional;
-
-    @FXML
-    private Button appointment_refresh_btn;
-
-    @FXML
-    private DatePicker appointment_schedule_date;
-
-    @FXML
-    private Button appointment_search_btn;
-
-    @FXML
-    private TextField appointment_search_textfield;
-
-    @FXML
-    private TableColumn<AppointmentDAO, String> appointment_stats;
-
-    @FXML
-    private TableColumn<AppointmentDAO, String> appointment_schedule;
-
-    @FXML
-    private TableColumn<AppointmentDAO, String> appointment_consult;
-
-    @FXML
-    private TableView<AppointmentDAO> appointment_table;
-
-    @FXML
-    private ComboBox<String> appointment_type_dropdown;
-
-    @FXML
-    private TableColumn<?, ?> patient_action;
-
-    @FXML
-    private Button patient_add_btn;
-
-    @FXML
-    private AnchorPane patient_new_form;
-
-    @FXML
-    private TableColumn<PatientDAO, String> patient_address;
-
-    @FXML
-    private Label patient_address_lbl;
-
-    @FXML
-    private TextField patient_address_textfield;
-
-    @FXML
-    private Label patient_age_lbl;
-
-    @FXML
-    private Button patient_back_btn;
-
-    @FXML
-    private DatePicker patient_birthday_date;
-
-    @FXML
-    private DatePicker patient_conclusion_date;
-
-    @FXML
-    private Button patient_confirm_btn;
-
-    @FXML
-    private Label patient_contact_lbl;
-
-    @FXML
-    private TextField patient_contact_textfield;
-
-    @FXML
-    private TableColumn<PatientDAO, String> patient_diagnosis;
-
-    @FXML
-    private TextArea patient_feedback_textfield;
-
-    @FXML
-    private AnchorPane patient_form;
-
-    @FXML
-    private TableColumn<PatientDAO, String> patient_fullname;
-
-    @FXML
-    private TableColumn<PatientDAO, String> patient_genre;
-
-    @FXML
-    private ComboBox<String> patient_genre_dropdown;
-
-    @FXML
-    private Label patient_genre_lbl;
-
-    @FXML
-    private TableColumn<PatientDAO, String> patient_id;
-
-    @FXML
-    private TableColumn<PatientDAO, String> patient_register_id;
-
-    @FXML
-    private Label patient_id_lbl;
-
-    @FXML
-    private Label patient_last_lbl;
-
-    @FXML
-    private DatePicker patient_last_update_date;
-
-    @FXML
-    private AnchorPane patient_list_form;
-
-    @FXML
-    private Label patient_name_lbl;
-
-    @FXML
-    private TextField patient_name_textfield;
-
-    @FXML
-    private Button patient_new_btn;
-
-    @FXML
-    private TextArea patient_observations_textfield;
-
-    @FXML
-    private TableColumn<PatientDAO, String> patient_phone;
-
-    @FXML
-    private TextArea patient_plan_textfield;
-
-    @FXML
-    private TableColumn<PatientDAO, String> patient_profissional;
-
-    @FXML
-    private TextArea patient_progress_textfield;
-
-    @FXML
-    private Button patient_refresh_btn;
-
-    @FXML
-    private Label patient_responsable_lbl;
-
-    @FXML
-    private ComboBox<String> patient_responsible_dropdown;
-
-    @FXML
-    private Button patient_search_btn;
-
-    @FXML
-    private TextField patient_search_textfield;
-
-    @FXML
-    private TableColumn<PatientDAO, String> patient_status;
-
-    @FXML
-    private TableView<PatientDAO> patient_table;
-
-    @FXML
-    private TextArea patient_tests_textfield;
-
-    @FXML
-    private TableColumn<PatientDAO, String> patient_treatment;
-
-
-    @FXML
-    private Label lbl_username;
-
     @Override
     public void switchForm(ActionEvent event) {
-        super.switchForm(event);
         pro_form.setVisible(event.getSource().equals(btn_pro));
         secretary_form.setVisible(event.getSource().equals(btn_secretary));
+        super.switchForm(event);
+    }
+
+    @FXML
+    public void searchPage() {
+        AdminDAO adminDAO = getAdmin();
+        if (pro_list_form.isVisible()) {
+            String search = pro_search_textfield.getText().replace("DID-", "");
+
+            List<DoctorDAO> filter = adminDAO.getDoctors()
+                    .stream()
+                    .filter(f -> f.getFullName().contains(search) ||
+                            f.getDoctorId().replace("DID-", "").contains(search)).toList();
+            doctorsDisplayData(filter);
+        } else if (appointment_list_form.isVisible()) {
+            String search = appointment_search_textfield.getText();
+            List<AppointmentDAO> filter = adminDAO.getAppointments()
+                    .stream()
+                    .filter(f -> f.getDoctorName().contains(search) ||
+                            f.getPatientName().contains(search))
+                    .toList();
+            appointmentDisplayData(filter);
+        } else if (secretary_list_form.isVisible()) {
+            String search = secretary_search_textfield.getText().replace("SID-", "");
+            List<SecretaryDAO> filter = adminDAO.getSecretaries()
+                    .stream()
+                    .filter(f -> f.getFullName().contains(search) ||
+                            f.getSecretaryId().replace("SID-", "").contains(search))
+                    .toList();
+            secretaryDisplayData(filter);
+        } else if (patient_list_form.isVisible()) {
+            String search = patient_search_textfield.getText().replace("PID-", "");
+            List<PatientDAO> filter = adminDAO.getPatients()
+                    .stream()
+                    .filter(f -> f.getFullName().contains(search) ||
+                            f.getPatientId().replace("PID-", "").contains(search))
+                    .toList();
+            if (adminDAO.getDoctors().isEmpty())
+                updateDoctors(adminDAO, true);
+            patientDisplayData(filter, adminDAO.getDoctors());
+        }
+    }
+
+    @FXML
+    public void refreshPage() {
         update(true);
     }
 
-    private void update(boolean verify) {
+    @Override
+    protected void update(boolean verify) {
         AdminDAO adminDAO = getAdmin();
         updateDoctors(adminDAO, !verify || pro_form.isVisible() || dashboard_form.isVisible());
         updateSecretaries(adminDAO, !verify || secretary_form.isVisible() || dashboard_form.isVisible());
@@ -433,21 +90,98 @@ public class AdminForm extends FormController {
         lbl_total_appointments.setText(String.valueOf(adminDAO.getAppointments().size()));
 
         if (pro_form.isVisible()) {
-            doctorsDisplayData(adminDAO);
+            doctorsDisplayData(adminDAO.getDoctors());
+            page_name.setText("Gerenciar");
         }
         if (patient_form.isVisible()) {
-            patientDisplayData(adminDAO);
+            if (adminDAO.getDoctors().isEmpty())
+                updateDoctors(adminDAO, true);
+            patientDisplayData(adminDAO.getPatients(), adminDAO.getDoctors());
+            page_name.setText("Gerenciar");
         }
         if (secretary_form.isVisible()) {
-            secretaryDisplayData(adminDAO);
+            secretaryDisplayData(adminDAO.getSecretaries());
+            page_name.setText("Gerenciar");
         }
         if (appointment_form.isVisible()) {
-            appointmentDisplayData(adminDAO);
+            appointmentDisplayData(adminDAO.getAppointments());
+            page_name.setText("Gerenciar");
         }
         if (dashboard_form.isVisible()) {
+            page_name.setText("Dashboard");
             dashboardDisplayData(adminDAO);
             dashboardNOA();
             dashboardNOP();
+        }
+        if (profile_form.isVisible()) {
+            page_name.setText("Configurar");
+            profile_fullname_textfield.setText(adminDAO.getFullName());
+            profile_email_textfield.setText(adminDAO.getEmail());
+            profile_genre_select.setItems(genreList());
+            profile_genre_select.getSelectionModel().select(adminDAO.getGender().getName());
+
+            SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd/MM/yyyy");
+            simpleDateFormat.setTimeZone(TimeZone.getTimeZone("GMT-3"));
+            profile_created_account_lbl.setText(simpleDateFormat.format(adminDAO.getCreatedAt()));
+
+            profile_oldpassword_textfield.setDisable(true);
+            profile_newpassword_textfield.textProperty().addListener((observable, oldValue, newValue) -> {
+                profile_oldpassword_textfield.setDisable(newValue.isBlank());
+            });
+
+            updateProfileInfo();
+        }
+    }
+
+    @FXML
+    public void saveProfile() {
+        String newPassword = profile_newpassword_textfield.getText();
+        String oldPassword = profile_oldpassword_textfield.getText();
+        AdminDAO adminDAO = getAdmin();
+        if (!newPassword.isBlank()) {
+            if (oldPassword.isBlank()) {
+                AlertMessage.errorMessage("Em casos de alteração de senha, é necessário confirmação da atual.");
+                return;
+            }
+            if (oldPassword.equals(newPassword)) {
+                AlertMessage.errorMessage("Sua senha atual é igual a nova.");
+                return;
+            }
+            if (!oldPassword.equals(adminDAO.getPassword())) {
+                AlertMessage.errorMessage("Senha atual incorreta.");
+                return;
+            }
+            adminDAO.setPassword(newPassword);
+        }
+        String fullName = profile_fullname_textfield.getText();
+        String email = profile_email_textfield.getText();
+        Genders gender = Genders.getGender(profile_genre_select.getSelectionModel().getSelectedItem());
+
+        if (fullName.isBlank() || email.isBlank()) {
+            AlertMessage.errorMessage("Alguns campos essenciais estão vazios.");
+            return;
+        }
+
+        adminDAO.setFullName(fullName);
+        adminDAO.setEmail(email);
+        adminDAO.setGender(gender);
+        adminDAO.setUpdatedAt(new Date());
+        adminDAO.save();
+        AlertMessage.successMessage("Conta atualizada com sucesso!");
+        updateProfileInfo();
+    }
+
+    @FXML
+    public void changeProfilePhoto() {
+        AdminDAO adminDAO = getAdmin();
+        FileChooser open = new FileChooser();
+        open.getExtensionFilters().add(new FileChooser.ExtensionFilter("Abrir Imagem", "*jpg", "*jpeg", "*png"));
+
+        File file = open.showOpenDialog(profile_import_btn.getScene().getWindow());
+
+        if (file != null) {
+            adminDAO.setImage(file.getAbsolutePath());
+            profile_pfp_circle.setFill(new ImagePattern(getUserManager().getImage()));
         }
     }
 
@@ -467,8 +201,11 @@ public class AdminForm extends FormController {
                 .filter(d -> d.getDayInPT().equalsIgnoreCase(pro_day_combobox.getSelectionModel().getSelectedItem()))
                 .findAny().orElse(Days.MONDAY);
         String hour = pro_hour_combobox.getSelectionModel().getSelectedItem();
-        if (!doctor.getAvailable().get(day).contains(hour))
-            doctor.getAvailable().get(day).add(hour);
+        if (!doctor.getAvailable().get(day).contains(hour)) {
+            List<String> availableHours = new ArrayList<>(doctor.getAvailable().get(day));
+            availableHours.add(hour);
+            doctor.getAvailable().put(day, availableHours);
+        }
 
         adminDAO.getDoctors().add(doctor);
         listHourDoctor(adminDAO);
@@ -495,7 +232,9 @@ public class AdminForm extends FormController {
             adminDAO.getDoctors().add(doctor);
             return;
         }
-        doctor.getAvailable().get(day).remove(hour);
+        List<String> availableHours = new ArrayList<>(doctor.getAvailable().get(day));
+        availableHours.remove(hour);
+        doctor.getAvailable().put(day, availableHours);
 
         adminDAO.getDoctors().add(doctor);
         listHourDoctor(adminDAO);
@@ -516,12 +255,13 @@ public class AdminForm extends FormController {
 
         LocalDate currentDate = LocalDate.now();
         LocalDate birthLocalDate = birth_date.toInstant().atZone(ZoneId.of("GMT-3")).toLocalDate();
-        Period period = Period.between(birthLocalDate, currentDate);
-        int age = period.getYears();
 
         String responsible = patient_responsible_dropdown.getSelectionModel().getSelectedItem();
         String mobile_phone = patient_contact_textfield.getText();
         String address = patient_address_textfield.getText();
+
+        Period period = Period.between(birthLocalDate, currentDate);
+        int age = period.getYears();
 
         LocalDate last_update_localdate = patient_last_update_date.getValue();
         if (last_update_localdate == null) patient_last_lbl.setText("------------");
@@ -532,7 +272,8 @@ public class AdminForm extends FormController {
             patient_last_lbl.setText(simpleDateFormat.format(last_update_date));
         }
 
-        patient_id_lbl.setText(generateId("PID", getAdmin().getPatients()));
+        if (patient_add_btn.getText().equalsIgnoreCase("Adicionar"))
+            patient_id_lbl.setText(generateId("PID", getAdmin().getPatients()));
         patient_age_lbl.setText(age + " anos");
         patient_responsable_lbl.setText((responsible == null || responsible.isBlank()) ? "------------" : responsible);
         patient_name_lbl.setText(fullName);
@@ -576,15 +317,30 @@ public class AdminForm extends FormController {
                 .status(Status.ACTIVE)
                 .doctorId(doctorId.orElse(0))
                 .address(address).build();
+        Button button = patient_add_btn;
+        if (button.getText().equalsIgnoreCase("Editar")) {
+            Optional<PatientDAO> patientDAOOptional = adminDAO.getPatients()
+                    .stream()
+                    .filter(f -> f.getPatientId().equalsIgnoreCase(patientId)).findAny();
+            if (patientDAOOptional.isPresent()) {
+                patientDAO = patientDAOOptional.get();
+                adminDAO.getPatients().remove(patientDAO);
+                patientDAO.setFullName(fullName);
+                patientDAO.setGender(gender);
+                patientDAO.setMobileNumber(mobile_phone);
+                patientDAO.setBirthday(birthday);
+                patientDAO.setDoctorId(doctorId.orElse(0));
+                patientDAO.setAddress(address);
+                patientDAO.setUpdatedAt(new Date());
+            }
+        }
         patientDAO.save();
 
         DiagnosisDAO diagnosisDAO = patientDAO.saveDiagnosis(patient_observations_textfield.getText(),
                 patient_tests_textfield.getText(), last_update_date);
         diagnosisDAO.load();
         int diagnosisId = diagnosisDAO.getId();
-        System.out.println(diagnosisId);
         patientDAO.setDiagnosisId(diagnosisId);
-        System.out.println(patientDAO.getDiagnosisId());
         patientDAO.setDiagnosis(diagnosisDAO);
 
         TreatmentDAO treatmentDAO = patientDAO.saveTreatment(patient_plan_textfield.getText(), patient_feedback_textfield.getText(),
@@ -592,13 +348,13 @@ public class AdminForm extends FormController {
         treatmentDAO.load();
         int treatmentId = treatmentDAO.getId();
         patientDAO.setTreatmentId(treatmentId);
-        System.out.println(patientDAO.getTreatmentId());
         patientDAO.setTreatment(treatmentDAO);
 
         patientDAO.save();
         patientDAO.loadPatientId();
 
-        AlertMessage.successMessage("Paciente " + fullName + " ("+patientId+") cadastrado com sucesso.");
+        String actionStatus = !button.getText().equalsIgnoreCase("Editar") ? "cadastrado" : "atualizado";
+        AlertMessage.successMessage("Paciente " + fullName + " ("+patientId+") "+actionStatus+" com sucesso.");
 
         patient_list_form.setVisible(true);
         patient_new_form.setVisible(false);
@@ -630,7 +386,10 @@ public class AdminForm extends FormController {
         patient_address_lbl.setText(resetLbl);
 
         adminDAO.getPatients().add(patientDAO);
-        patientDisplayData(adminDAO);
+
+        adminDAO.getPatients().sort(Comparator.comparingInt(PatientDAO::getId));
+
+        patientDisplayData(adminDAO.getPatients(), adminDAO.getDoctors());
     }
 
     @FXML
@@ -655,19 +414,100 @@ public class AdminForm extends FormController {
                 .updatedAt(new Date())
                 .createdAt(new Date())
                 .build();
+
+        Button button = secretary_add_btn;
+        if (button.getText().equalsIgnoreCase("Editar")) {
+            Optional<SecretaryDAO> secretaryDAOOptional = adminDAO.getSecretaries()
+                    .stream()
+                    .filter(f -> f.getSecretaryId().equalsIgnoreCase(secretaryId)).findAny();
+            if (secretaryDAOOptional.isPresent()) {
+                secretaryDAO = secretaryDAOOptional.get();
+                adminDAO.getSecretaries().remove(secretaryDAO);
+                secretaryDAO.setEmail(email);
+                secretaryDAO.setPassword(password);
+                secretaryDAO.setFullName(fullName);
+                secretaryDAO.setGender(gender);
+                secretaryDAO.setUpdatedAt(new Date());
+            }
+        }
+
         secretaryDAO.save();
         secretaryDAO.loadRegisterId();
 
         adminDAO.getSecretaries().add(secretaryDAO);
 
-        AlertMessage.successMessage("Conta da secretária " + fullName + " ("+secretaryId+") criada com sucesso.");
+        String actionStatus = !button.getText().equalsIgnoreCase("Editar") ? "criada" : "atualizada";
+        AlertMessage.successMessage("Conta da secretária " + fullName + " ("+secretaryId+") "+actionStatus+" com sucesso.");
         secretary_list_form.setVisible(true);
         secretary_new_form.setVisible(false);
         secretary_fullname_textfield.clear();
         secretary_email_textfield.clear();
         secretary_password_textfield.clear();
         secretary_genre_combobox.getSelectionModel().clearSelection();
-        secretaryDisplayData(adminDAO);
+
+        adminDAO.getSecretaries().sort(Comparator.comparingInt(SecretaryDAO::getId));
+
+        secretaryDisplayData(adminDAO.getSecretaries());
+    }
+
+    @FXML
+    public void addDoctorButton() {
+        String fullName = pro_fullname_textfield.getText();
+        String password = pro_password_textfield.getText();
+        String email = pro_email_textfield.getText();
+        Genders gender = Genders.getGender(pro_genre_combobox.getSelectionModel().getSelectedItem());
+        if (fullName.isBlank() || password.isBlank() || email.isBlank()) {
+            AlertMessage.errorMessage("Preencha todos os campos.");
+            return;
+        }
+        AdminDAO adminDAO = getAdmin();
+        String doctorId = pro_register_id_textfield.getText();
+        DoctorDAO doctor = adminDAO.getDoctors().stream()
+                .filter(doctorDAO -> doctorDAO.getDoctorId().equalsIgnoreCase(doctorId))
+                .findAny().orElse(
+                        DoctorDAO.builder().fullName(fullName)
+                                .password(password)
+                                .email(email)
+                                .gender(gender)
+                                .doctorId(doctorId)
+                                .build()
+                );
+        adminDAO.getDoctors().remove(doctor);
+        doctor.setPassword(password);
+        doctor.setEmail(email);
+        doctor.setFullName(fullName);
+        doctor.setGender(gender);
+        doctor.setStatus(Status.ACTIVE);
+        Button button = pro_add_btn;
+        if (!button.getText().equalsIgnoreCase("Editar"))
+            doctor.setCreatedAt(new Date());
+        doctor.setUpdatedAt(new Date());
+        doctor.save();
+
+        TimeDAO timeDAO = doctor.saveTime();
+        timeDAO.loadDoctorId();
+        int timeId = timeDAO.getId();
+        doctor.setTimeId(timeId);
+        doctor.save();
+        doctor.loadDoctorId();
+
+        String actionStatus = !button.getText().equalsIgnoreCase("Editar") ? "criada" : "atualizada";
+        AlertMessage.successMessage("Conta do doutor " + fullName + " ("+doctorId+") "+actionStatus+" com sucesso.");
+
+        adminDAO.getDoctors().add(doctor);
+
+        pro_list_form.setVisible(true);
+        pro_new_form.setVisible(false);
+        pro_fullname_textfield.clear();
+        pro_email_textfield.clear();
+        pro_password_textfield.clear();
+        pro_hour_combobox.getSelectionModel().clearSelection();
+        pro_day_combobox.getSelectionModel().clearSelection();
+        pro_genre_combobox.getSelectionModel().clearSelection();
+
+        adminDAO.getDoctors().sort(Comparator.comparingInt(DoctorDAO::getId));
+
+        doctorsDisplayData(adminDAO.getDoctors());
     }
 
     @FXML
@@ -725,7 +565,7 @@ public class AdminForm extends FormController {
 
         adminDAO.getAppointments().add(appointment);
 
-        appointmentDisplayData(adminDAO);
+        appointmentDisplayData(adminDAO.getAppointments());
     }
 
     @FXML
@@ -760,8 +600,6 @@ public class AdminForm extends FormController {
         }
 
         DoctorDAO doctorDAO = doctorDAOOptional.get();
-        System.out.println(doctorDAO.getFullName());
-        System.out.println(doctorDAO.getId());
         doctorDAO.load();
         System.out.println(doctorDAO.getTimeId());
 
@@ -777,7 +615,6 @@ public class AdminForm extends FormController {
                         return;
                     }
                     ObservableList<String> h = FXCollections.observableArrayList(hours);
-                    System.out.println("ObservableList: "+h);
                     appointment_hour_dropdown.setItems(h);
                     appointment_hour_dropdown.setDisable(false);
                     appointment_hour_dropdown.getSelectionModel().selectFirst();
@@ -795,164 +632,6 @@ public class AdminForm extends FormController {
         appointment_mark_btn.setDisable(false);
     }
 
-    @FXML
-    public void addDoctorButton() {
-        String fullName = pro_fullname_textfield.getText();
-        String password = pro_password_textfield.getText();
-        String email = pro_email_textfield.getText();
-        Genders gender = Genders.getGender(pro_genre_combobox.getSelectionModel().getSelectedItem());
-        if (fullName.isBlank() || password.isBlank() || email.isBlank()) {
-            AlertMessage.errorMessage("Preencha todos os campos.");
-            return;
-        }
-        AdminDAO adminDAO = getAdmin();
-        String doctorId = pro_register_id_textfield.getText();
-        DoctorDAO doctor = adminDAO.getDoctors().stream()
-                .filter(doctorDAO -> doctorDAO.getDoctorId().equalsIgnoreCase(doctorId))
-                .findAny().orElse(
-                        DoctorDAO.builder().fullName(fullName)
-                                .password(password)
-                                .email(email)
-                                .gender(gender)
-                                .doctorId(doctorId)
-                                .build()
-                );
-        adminDAO.getDoctors().remove(doctor);
-        doctor.setPassword(password);
-        doctor.setEmail(email);
-        doctor.setFullName(fullName);
-        doctor.setGender(gender);
-        doctor.setStatus(Status.ACTIVE);
-        doctor.setCreatedAt(new Date());
-        doctor.setUpdatedAt(new Date());
-        doctor.save();
-
-        TimeDAO timeDAO = doctor.saveTime();
-        timeDAO.loadDoctorId();
-        int timeId = timeDAO.getId();
-        doctor.setTimeId(timeId);
-        doctor.save();
-        doctor.loadDoctorId();
-
-        AlertMessage.successMessage("Conta do doutor " + fullName + " ("+doctorId+") criada com sucesso.");
-
-        adminDAO.getDoctors().add(doctor);
-
-        pro_list_form.setVisible(true);
-        pro_new_form.setVisible(false);
-        pro_fullname_textfield.clear();
-        pro_email_textfield.clear();
-        pro_password_textfield.clear();
-        pro_hour_combobox.getSelectionModel().clearSelection();
-        pro_day_combobox.getSelectionModel().clearSelection();
-        pro_genre_combobox.getSelectionModel().clearSelection();
-        doctorsDisplayData(adminDAO);
-    }
-
-    protected void listHourDoctor(AdminDAO adminDAO) {
-        String doctorId = pro_register_id_textfield.getText();
-        Optional<DoctorDAO> doctorDAOOptional = adminDAO.getDoctors().stream()
-                .filter(doctorDAO -> doctorDAO.getDoctorId().equalsIgnoreCase(doctorId))
-                .findAny();
-        if (doctorDAOOptional.isPresent()) {
-            DoctorDAO doctor = doctorDAOOptional.get();
-            Map<Days, List<String>> dataMap = doctor.getAvailable();
-            pro_monday_table.setCellValueFactory(param -> param.getValue().getDayColumn(Days.MONDAY));
-            pro_tuesday_table.setCellValueFactory(param -> param.getValue().getDayColumn(Days.TUESDAY));
-            pro_wednesday_table.setCellValueFactory(param -> param.getValue().getDayColumn(Days.WEDNESDAY));
-            pro_thursday_table.setCellValueFactory(param -> param.getValue().getDayColumn(Days.THURSDAY));
-            pro_friday_table.setCellValueFactory(param -> param.getValue().getDayColumn(Days.FRIDAY));
-            pro_days_table.setItems(FXCollections.observableArrayList(createGroupedSchedules(dataMap)));
-        }
-    }
-
-    private List<WeeklySchedule> createGroupedSchedules(Map<Days, List<String>> dataMap) {
-        List<WeeklySchedule> groupedSchedules = new LinkedList<>();
-
-        int maxTimes = dataMap.values().stream().mapToInt(List::size).max().orElse(0);
-        for (int i = 0; i < maxTimes; i++) {
-            WeeklySchedule groupedSchedule = new WeeklySchedule();
-            for (Days day : Days.values()) {
-                List<String> times = dataMap.get(day);
-                if (i < times.size()) {
-                    groupedSchedule.getDayColumn(day).set(times.get(i));
-                } else {
-                    groupedSchedule.getDayColumn(day).set("");
-                }
-            }
-            groupedSchedules.add(groupedSchedule);
-        }
-
-        return groupedSchedules;
-    }
-
-    private void updateSecretaries(AdminDAO adminDAO, boolean secretary_form) {
-        if (!adminDAO.getSecretaries().isEmpty())
-            adminDAO.getSecretaries().clear();
-        if (!secretary_form) return;
-        ListData listData = Manager.getManager(DatabaseManager.class).getMySQL().getHandler().list()
-                .from(SecretaryDAO.class).builder();
-        final List<SecretaryDAO> secretaries = new ArrayList<>();
-        listData.get("id").ifPresent(list -> secretaries.addAll(list.stream().map(data -> {
-            SecretaryDAO secretary = SecretaryDAO.builder().id(data.asInt()).build();
-            secretary.load();
-            return secretary;
-        }).toList()));
-        adminDAO.getSecretaries().addAll(secretaries);
-        secretaries.clear();
-    }
-
-    private void updateDoctors(AdminDAO adminDAO, boolean doctor_form) {
-        if (!adminDAO.getDoctors().isEmpty())
-            adminDAO.getDoctors().clear();
-        if (!doctor_form)
-            return;
-        ListData listData = Manager.getManager(DatabaseManager.class).getMySQL().getHandler().list()
-                .from(DoctorDAO.class).builder();
-        final List<DoctorDAO> doctors = new ArrayList<>();
-        listData.get("id").ifPresent(list -> doctors.addAll(list.stream().map(data -> {
-            DoctorDAO doctor = DoctorDAO.builder().id(data.asInt()).build();
-            doctor.load();
-            return doctor;
-        }).toList()));
-        adminDAO.getDoctors().addAll(doctors);
-        doctors.clear();
-    }
-
-    private void updatePatients(AdminDAO adminDAO, boolean patient_form) {
-        if (!adminDAO.getPatients().isEmpty())
-            adminDAO.getPatients().clear();
-        if (!patient_form) return;
-        ListData listData = Manager.getManager(DatabaseManager.class).getMySQL().getHandler().list()
-                .from(PatientDAO.class).builder();
-        final List<PatientDAO> patients = new ArrayList<>();
-        listData.get("id").ifPresent(list -> patients.addAll(list.stream().map(data -> {
-            PatientDAO patient = PatientDAO.builder().id(data.asInt()).build();
-            patient.load();
-            return patient;
-        }).toList()));
-        adminDAO.getPatients().addAll(patients);
-        patients.clear();
-    }
-
-    private void updateAppointment(AdminDAO adminDAO, boolean appointment_form) {
-        if (!adminDAO.getAppointments().isEmpty())
-            adminDAO.getAppointments().clear();
-        if (!appointment_form) return;
-        ListData listData = Manager.getManager(DatabaseManager.class).getMySQL().getHandler().list()
-                .from(AppointmentDAO.class).builder();
-        final List<AppointmentDAO> appointments = new ArrayList<>();
-        listData.get("id").ifPresent(list -> appointments.addAll(list.stream().map(data -> {
-            AppointmentDAO appointment = AppointmentDAO.builder().id(data.asInt()).build();
-            appointment.load();
-            appointment.loadDoctorName();
-            appointment.loadPatientName();
-            return appointment;
-        }).toList()));
-        adminDAO.getAppointments().addAll(appointments);
-        appointments.clear();
-    }
-
     public void showAndHideList(ActionEvent event) {
         AdminDAO adminDAO = getAdmin();
         if (event.getSource().equals(pro_back_btn) || event.getSource().equals(pro_new_btn)) {
@@ -966,10 +645,11 @@ public class AdminForm extends FormController {
                         .findAny();
                 if (doctorDAOOptional.isPresent()) {
                     DoctorDAO doctorDAO = doctorDAOOptional.get();
-                    adminDAO.getDoctors().remove(doctorDAO);
+                    if (doctorDAO.getId() == 0)
+                        adminDAO.getDoctors().remove(doctorDAO);
                 }
 
-                doctorsDisplayData(adminDAO);
+                doctorsDisplayData(adminDAO.getDoctors());
                 pro_register_id_textfield.clear();
                 pro_fullname_textfield.clear();
                 pro_email_textfield.clear();
@@ -978,34 +658,28 @@ public class AdminForm extends FormController {
                 pro_day_combobox.getSelectionModel().clearSelection();
                 pro_genre_combobox.getSelectionModel().clearSelection();
             } else if (pro_new_form.isVisible()) {
-                pro_register_id_textfield.setText(generateId("DID", adminDAO.getDoctors()));
-                daysList();
-                listHourDoctor(adminDAO);
-                pro_genre_combobox.setItems(genreList());
-                pro_genre_combobox.getSelectionModel().selectFirst();
+                newOrEditDoctor(null);
             }
         } else if (event.getSource().equals(secretary_back_btn) || event.getSource().equals(secretary_new_btn)) {
             secretary_list_form.setVisible(event.getSource().equals(secretary_back_btn));
             secretary_new_form.setVisible(event.getSource().equals(secretary_new_btn));
 
             if (secretary_list_form.isVisible()) {
-                secretaryDisplayData(adminDAO);
+                secretaryDisplayData(adminDAO.getSecretaries());
                 secretary_password_textfield.clear();
                 secretary_fullname_textfield.clear();
                 secretary_email_textfield.clear();
                 secretary_register_id_textfield.clear();
                 secretary_genre_combobox.getSelectionModel().clearSelection();
             } else if (secretary_new_form.isVisible()) {
-                secretary_register_id_textfield.setText(generateId("SEC", adminDAO.getSecretaries()));
-                secretary_genre_combobox.setItems(genreList());
-                secretary_genre_combobox.getSelectionModel().selectFirst();
+                newOrEditSecretary(null);
             }
         } else if (event.getSource().equals(appointment_back_btn) || event.getSource().equals(appointment_new_btn)) {
             appointment_list_form.setVisible(event.getSource().equals(appointment_back_btn));
             appointment_new_form.setVisible(event.getSource().equals(appointment_new_btn));
 
             if (appointment_list_form.isVisible()) {
-                appointmentDisplayData(adminDAO);
+                appointmentDisplayData(adminDAO.getAppointments());
 
                 appointment_patient_textfield.clear();
                 appointment_pro_textfield.clear();
@@ -1013,15 +687,7 @@ public class AdminForm extends FormController {
                 appointment_hour_dropdown.getSelectionModel().clearSelection();
                 appointment_type_dropdown.getSelectionModel().clearSelection();
             } else if (appointment_new_form.isVisible()) {
-                appointment_patient_textfield.setDisable(false);
-                appointment_pro_textfield.setDisable(true);
-                appointment_schedule_date.setDisable(true);
-                appointment_hour_dropdown.setDisable(true);
-                appointment_type_dropdown.setDisable(true);
-                appointment_mark_btn.setDisable(true);
-
-                appointment_type_dropdown.setItems(typeList());
-                appointment_type_dropdown.getSelectionModel().clearSelection();
+                newOrEditAppointment();
             }
 
         } else if (event.getSource().equals(patient_back_btn) || event.getSource().equals(patient_new_btn)) {
@@ -1034,7 +700,9 @@ public class AdminForm extends FormController {
             patient_new_form.setVisible(event.getSource().equals(patient_new_btn));
 
             if (patient_list_form.isVisible()) {
-                patientDisplayData(adminDAO);
+                if (adminDAO.getDoctors().isEmpty())
+                    updateDoctors(adminDAO, true);
+                patientDisplayData(adminDAO.getPatients(), adminDAO.getDoctors());
 
                 patient_name_textfield.clear();
                 patient_responsible_dropdown.getSelectionModel().clearSelection();
@@ -1062,84 +730,9 @@ public class AdminForm extends FormController {
                 patient_contact_lbl.setText(resetLbl);
                 patient_address_lbl.setText(resetLbl);
             } else if (patient_new_form.isVisible()) {
-                updateDoctors(adminDAO, true);
-                patient_responsible_dropdown.setItems(doctors(adminDAO));
-                patient_responsible_dropdown.getSelectionModel().selectFirst();
-
-                patient_genre_dropdown.setItems(genreList());
-                patient_genre_dropdown.getSelectionModel().selectFirst();
+                newOrEditPatient(null);
             }
         }
-    }
-
-    private ObservableList<String> doctors(AdminDAO adminDAO) {
-        List<String> doctorsName = adminDAO.getDoctors().stream().map(DoctorDAO::getFullName).toList();
-        return FXCollections.observableList(doctorsName);
-    }
-
-    public void patientDisplayData(AdminDAO adminDAO) {
-        ObservableList<PatientDAO> dashboardGetData = FXCollections.observableList(adminDAO.getPatients());
-
-        patient_id.setCellValueFactory(param -> new SimpleStringProperty(""+param.getValue().getId()));
-        patient_register_id.setCellValueFactory(param -> new SimpleStringProperty(param.getValue().getPatientId()));
-        patient_fullname.setCellValueFactory(param -> new SimpleStringProperty(param.getValue().getFullName()));
-        patient_genre.setCellValueFactory(param -> new SimpleStringProperty(param.getValue().getGender().getName()));
-        patient_phone.setCellValueFactory(param -> new SimpleStringProperty(param.getValue().getMobileNumber().isBlank() ? "Não informado":param.getValue().getMobileNumber()));
-        patient_address.setCellValueFactory(param -> new SimpleStringProperty(param.getValue().getAddress().isBlank() ? "Não informado" : param.getValue().getAddress()));
-        patient_diagnosis.setCellValueFactory(param -> new SimpleStringProperty(String.valueOf(param.getValue().getDiagnosisId())));
-        patient_treatment.setCellValueFactory(param -> new SimpleStringProperty(String.valueOf(param.getValue().getTreatmentId())));
-        patient_profissional.setCellValueFactory(param -> new SimpleStringProperty(param.getValue().getDoctorName(adminDAO.getDoctors())));
-        patient_status.setCellValueFactory(param -> new SimpleStringProperty(param.getValue().getStatus().getName()));
-
-        patient_table.setItems(dashboardGetData);
-    }
-
-    public void secretaryDisplayData(AdminDAO adminDAO) {
-        ObservableList<SecretaryDAO> dashboardGetData = FXCollections.observableList(adminDAO.getSecretaries());
-        secretary_table_id.setCellValueFactory(param -> new SimpleStringProperty(""+param.getValue().getId()));
-        secretary_table_register_id.setCellValueFactory(param -> new SimpleStringProperty(param.getValue().getSecretaryId()));
-        secretary_table_fullname.setCellValueFactory(param -> new SimpleStringProperty(param.getValue().getFullName()));
-        secretary_table_genre.setCellValueFactory(param -> new SimpleStringProperty(param.getValue().getGender().getName()));
-        secretary_table_phone.setCellValueFactory(param -> new SimpleStringProperty(!Objects.equals(param.getValue().getMobileNumber(), "null") ? param.getValue().getAddress() : "Não informado"));
-        secretary_table_email.setCellValueFactory(param -> new SimpleStringProperty(!Objects.equals(param.getValue().getEmail(), "null") ? param.getValue().getEmail() : "Não informado"));
-        secretary_table_status.setCellValueFactory(param -> new SimpleStringProperty(param.getValue().getStatus().getName()));
-        secretary_table_address.setCellValueFactory(param -> new SimpleStringProperty(!Objects.equals(param.getValue().getAddress(), "null") ? param.getValue().getAddress() : "Não informado"));
-        secretary_table.setItems(dashboardGetData);
-    }
-
-    public void appointmentDisplayData(AdminDAO adminDAO) {
-        ObservableList<AppointmentDAO> dashboardGetData = FXCollections.observableList(adminDAO.getAppointments());
-        appointment_id.setCellValueFactory(param -> new SimpleStringProperty(String.valueOf(param.getValue().getId())));
-        appointment_patient.setCellValueFactory(param -> new SimpleStringProperty(param.getValue().getPatientName()));
-        appointment_profissional.setCellValueFactory(param -> new SimpleStringProperty(param.getValue().getDoctorName()));
-        appointment_schedule.setCellValueFactory(param -> new SimpleStringProperty(new SimpleDateFormat("dd/MM/yyyy").format(param.getValue().getConsultationDate())));
-        appointment_hour.setCellValueFactory(param -> new SimpleStringProperty(param.getValue().getConsultationHour()));
-        appointment_consult.setCellValueFactory(param -> new SimpleStringProperty(param.getValue().getConsultType().getName()));
-        appointment_stats.setCellValueFactory(param -> new SimpleStringProperty(param.getValue().getStatus().getName()));
-        appointment_table.setItems(dashboardGetData);
-    }
-
-    public void doctorsDisplayData(AdminDAO adminDAO) {
-        ObservableList<DoctorDAO> dashboardGetData = FXCollections.observableList(adminDAO.getDoctors());
-        pro_table_id.setCellValueFactory(param -> new SimpleStringProperty(""+param.getValue().getId()));
-        pro_table_register_id.setCellValueFactory(param -> new SimpleStringProperty(param.getValue().getDoctorId()));
-        pro_table_fullname.setCellValueFactory(param -> new SimpleStringProperty(param.getValue().getFullName()));
-        pro_table_genre.setCellValueFactory(param -> new SimpleStringProperty(param.getValue().getGender().getName()));
-        pro_table_phone.setCellValueFactory(param -> new SimpleStringProperty(!Objects.equals(param.getValue().getMobileNumber(), "null") ? param.getValue().getAddress() : "Não informado"));
-        pro_table_email.setCellValueFactory(param -> new SimpleStringProperty(!Objects.equals(param.getValue().getEmail(), "null") ? param.getValue().getEmail() : "Não informado"));
-        pro_table_status.setCellValueFactory(param -> new SimpleStringProperty(param.getValue().getStatus().getName()));
-        pro_table_address.setCellValueFactory(param -> new SimpleStringProperty(!Objects.equals(param.getValue().getAddress(), "null") ? param.getValue().getAddress() : "Não informado"));
-        pro_table.setItems(dashboardGetData);
-    }
-
-    public void daysList() {
-        List<String> days = new ArrayList<>(Stream.of(Days.values()).map(Days::getDayInPT).toList());
-        ObservableList<String> listData = FXCollections.observableList(days);
-        pro_day_combobox.setItems(listData);
-
-        List<String> hours = getDailyTimeSlots();
-        listData = FXCollections.observableList(hours);
-        pro_hour_combobox.setItems(listData);
     }
 
     private AdminDAO getAdmin() {
@@ -1154,34 +747,8 @@ public class AdminForm extends FormController {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         super.initialize(location, resources);
-        final StringConverter<LocalDate> converter = new StringConverter<>() {
-            final DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-
-            @Override
-            public String toString(LocalDate date) {
-                if (date != null) {
-                    return dateFormatter.format(date);
-                } else {
-                    return "";
-                }
-            }
-
-            @Override
-            public LocalDate fromString(String string) {
-                if (string != null && !string.isEmpty()) {
-                    return LocalDate.parse(string, dateFormatter);
-                } else {
-                    return null;
-                }
-            }
-        };
-
-        patient_birthday_date.setConverter(converter);
-        patient_last_update_date.setConverter(converter);
-        patient_conclusion_date.setConverter(converter);
-        appointment_schedule_date.setConverter(converter);
-
-        lbl_username.setText(getUserManager().getName());
-        update(false);
+        AdminDAO adminDAO = getAdmin();
+        if (adminDAO.getImage() != null && !adminDAO.getImage().isBlank() && !adminDAO.getImage().equalsIgnoreCase("null"))
+            circle_pfp.setFill(new ImagePattern(getUserManager().getImage()));
     }
 }

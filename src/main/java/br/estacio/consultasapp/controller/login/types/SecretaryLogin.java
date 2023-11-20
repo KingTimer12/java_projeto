@@ -1,6 +1,5 @@
 package br.estacio.consultasapp.controller.login.types;
 
-import br.com.timer.objects.data.DataHandler;
 import br.com.timer.objects.data.types.FetchData;
 import br.com.timer.objects.rows.Rows;
 import br.estacio.consultasapp.controller.GuiManager;
@@ -9,16 +8,13 @@ import br.estacio.consultasapp.database.DatabaseManager;
 import br.estacio.consultasapp.handler.Manager;
 import br.estacio.consultasapp.user.UserManager;
 import br.estacio.consultasapp.user.dao.DoctorDAO;
-import br.estacio.consultasapp.user.enums.Genders;
-import br.estacio.consultasapp.user.enums.Status;
+import br.estacio.consultasapp.user.dao.SecretaryDAO;
 import br.estacio.consultasapp.utils.AlertMessage;
 import javafx.fxml.FXML;
-import javafx.scene.control.*;
-import javafx.scene.layout.AnchorPane;
 
 import java.io.IOException;
 
-public class DoctorLogin extends LoginController {
+public class SecretaryLogin extends LoginController {
 
     @FXML
     @Override
@@ -38,8 +34,8 @@ public class DoctorLogin extends LoginController {
 
         FetchData dataHandler = Manager.getManager(DatabaseManager.class).getMySQL()
                 .getHandler()
-                .fetch().from(DoctorDAO.class)
-                .where(Rows.of("doctor_id", login_username.getText()), Rows.of("password", login_password.getText()))
+                .fetch().from(SecretaryDAO.class)
+                .where(Rows.of("secretary_id", login_username.getText()), Rows.of("password", login_password.getText()))
                 .builder();
         if (!dataHandler.isNext()) {
             AlertMessage.errorMessage(error_message_password);
@@ -49,19 +45,13 @@ public class DoctorLogin extends LoginController {
         UserManager userManager = Manager.getManager(UserManager.class);
 
         dataHandler.get("id").ifPresent(row -> {
-            DoctorDAO user = DoctorDAO.builder().id(row.asInt()).build();
+            SecretaryDAO user = SecretaryDAO.builder().id(row.asInt()).build();
             user.load();
-            if (!user.getStatus().equals(Status.DELETED))
-                userManager.setUser(user);
+            userManager.setUser(user);
         });
 
-        if (userManager.getUser() == null) {
-            AlertMessage.errorMessage("Conta deletada ou inexistente.");
-            return;
-        }
-
         AlertMessage.successMessage("Login efetuado com sucesso.");
-        Manager.getManager(GuiManager.class).openGui("doctorMainForm");
+        Manager.getManager(GuiManager.class).openGui("secretaryMainForm");
         login_btn.getScene().getWindow().hide();
     }
 

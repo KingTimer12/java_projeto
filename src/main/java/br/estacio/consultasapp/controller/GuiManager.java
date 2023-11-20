@@ -28,13 +28,29 @@ public class GuiManager extends Manager {
     }
 
     public void openGui(String sceneName) throws IOException {
-        openGui(sceneName, StageStyle.DECORATED);
+        openGui(sceneName, StageStyle.TRANSPARENT);
     }
 
     public void openGui(String sceneName, StageStyle stageStyle) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource(sceneName + ".fxml"));
         Parent root = fxmlLoader.load();
         Stage stage = new Stage();
+
+        root.setOnMousePressed((MouseEvent event) -> {
+            setX(event.getSceneX());
+            setY(event.getSceneY());
+        });
+
+        root.setOnMouseDragged((MouseEvent event) -> {
+            stage.setX(event.getScreenX() - x);
+            stage.setY(event.getScreenY() - y);
+
+            stage.setOpacity(.8);
+        });
+
+        root.setOnMouseReleased((MouseEvent event) -> {
+            stage.setOpacity(1);
+        });
 
         stage.setTitle("Agenda de Consultas");
         stage.initStyle(stageStyle);

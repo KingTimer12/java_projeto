@@ -9,9 +9,11 @@ import br.com.timer.objects.rows.Rows;
 import br.com.timer.objects.rows.TypeField;
 import br.estacio.consultasapp.database.DatabaseManager;
 import br.estacio.consultasapp.handler.Manager;
+import br.estacio.consultasapp.user.ExtendedDAO;
 import br.estacio.consultasapp.user.User;
 import br.estacio.consultasapp.user.enums.Genders;
 import br.estacio.consultasapp.user.enums.Status;
+import br.estacio.consultasapp.user.interfaces.IStatus;
 import br.estacio.consultasapp.user.interfaces.IdInterface;
 import lombok.Builder;
 import lombok.Getter;
@@ -25,7 +27,7 @@ import java.util.Optional;
 @Getter
 @Builder
 @TableName(name = "patients")
-public class PatientDAO extends HandlerDAO implements IdInterface {
+public class PatientDAO extends ExtendedDAO implements IStatus {
 
     @ColumnRow
     @PrimaryKeyAutoIncrement
@@ -111,6 +113,12 @@ public class PatientDAO extends HandlerDAO implements IdInterface {
 
     public void load() {
         super.load(Rows.of("id", this.id));
+
+        this.treatment = this.treatment == null ? TreatmentDAO.builder().patientId(id).build() : this.treatment;
+        this.treatment.load();
+
+        this.diagnosis = this.diagnosis == null ? DiagnosisDAO.builder().patientId(id).build() : this.diagnosis;
+        this.diagnosis.load();
     }
 
     public void loadPatientId() {

@@ -1,6 +1,7 @@
 package br.estacio.consultasapp.controller.login;
 
 import br.estacio.consultasapp.controller.GuiManager;
+import br.estacio.consultasapp.controller.IClose;
 import br.estacio.consultasapp.handler.Manager;
 import br.estacio.consultasapp.utils.UsersPanel;
 import javafx.collections.FXCollections;
@@ -18,7 +19,7 @@ import java.util.List;
 import java.util.Objects;
 import java.util.ResourceBundle;
 
-public abstract class LoginController implements ILogin, Initializable {
+public abstract class LoginController implements ILogin, IClose, Initializable {
 
     @FXML
     protected Button login_btn;
@@ -36,16 +37,10 @@ public abstract class LoginController implements ILogin, Initializable {
     protected PasswordField login_password;
 
     @FXML
-    private Hyperlink login_registerBtn;
-
-    @FXML
     protected TextField login_showPassword;
 
     @FXML
     protected TextField login_username;
-
-    @FXML
-    private AnchorPane main_form;
 
     @Override
     public void close() {
@@ -62,12 +57,6 @@ public abstract class LoginController implements ILogin, Initializable {
         login_password.setVisible(!login_password.isVisible());
     }
 
-    public void clearFields() {
-        login_password.clear();
-        login_showPassword.clear();
-        login_username.clear();
-    }
-
     public void userList() {
         List<String> listU = new ArrayList<>(List.of(UsersPanel.USERS));
         ObservableList<String> listData = FXCollections.observableList(listU);
@@ -81,6 +70,8 @@ public abstract class LoginController implements ILogin, Initializable {
             guiManager.openGui("adminLogin", StageStyle.TRANSPARENT);
         } else if (Objects.equals(login_panel.getSelectionModel().getSelectedItem(), "Portal do Profissional")) {
             guiManager.openGui("doctorLogin", StageStyle.TRANSPARENT);
+        } else if (Objects.equals(login_panel.getSelectionModel().getSelectedItem(), "Portal da Secretária")) {
+            guiManager.openGui("secretaryLogin", StageStyle.TRANSPARENT);
         }
         login_panel.getScene().getWindow().hide();
     }

@@ -9,18 +9,23 @@ import br.com.timer.objects.rows.Rows;
 import br.com.timer.objects.rows.TypeField;
 import br.estacio.consultasapp.database.DatabaseManager;
 import br.estacio.consultasapp.handler.Manager;
+import br.estacio.consultasapp.user.ExtendedDAO;
 import br.estacio.consultasapp.user.User;
+import br.estacio.consultasapp.user.UserDAO;
 import br.estacio.consultasapp.user.enums.Genders;
+import br.estacio.consultasapp.user.enums.Status;
+import javafx.scene.image.Image;
 import lombok.*;
 
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+@Setter
 @Getter
 @Builder
 @TableName(name = "administrators")
-public class AdminDAO extends HandlerDAO implements User {
+public class AdminDAO extends UserDAO implements User {
 
     private boolean loaded;
 
@@ -33,6 +38,9 @@ public class AdminDAO extends HandlerDAO implements User {
 
     @ColumnRow(typeField = TypeField.VARCHAR, size = 100)
     private String username;
+
+    @ColumnRow(typeField = TypeField.VARCHAR, size = 100)
+    private String fullName;
 
     @ColumnRow(typeField = TypeField.VARCHAR, size = 100)
     private String password;
@@ -48,11 +56,6 @@ public class AdminDAO extends HandlerDAO implements User {
 
     @ColumnRow
     private Date updatedAt;
-
-    private final List<DoctorDAO> doctors = new ArrayList<>();
-    private final List<PatientDAO> patients = new ArrayList<>();
-    private final List<SecretaryDAO> secretaries = new ArrayList<>();
-    private final List<AppointmentDAO> appointments = new ArrayList<>();
 
     public void save() {
         super.save(Rows.of("username", this.username));
@@ -73,4 +76,13 @@ public class AdminDAO extends HandlerDAO implements User {
         return this;
     }
 
+    @Override
+    public void setStatus(Status status) {
+
+    }
+
+    @Override
+    public String getOtherId() {
+        return null;
+    }
 }

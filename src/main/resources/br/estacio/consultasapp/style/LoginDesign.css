@@ -48,6 +48,15 @@
     -fx-background-color: linear-gradient(to bottom, #339999, #009999);
 }
 
+.minus {
+    -fx-background-color: transparent;
+    -fx-cursor:hand;
+}
+
+.minus:hover {
+    -fx-background-color: #0099cc;
+}
+
 .close {
     -fx-background-color: transparent;
     -fx-cursor:hand;
@@ -55,4 +64,14 @@
 
 .close:hover {
     -fx-background-color: #f43f57;
+}
+
+.logout {
+    -fx-text-fill: #fff;
+    -fx-background-color: #f43f57;
+    -fx-cursor:hand;
+}
+
+.logout:hover {
+    -fx-background-color: #cc3333;
 }

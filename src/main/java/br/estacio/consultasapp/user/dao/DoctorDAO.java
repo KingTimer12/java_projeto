@@ -9,7 +9,9 @@ import br.com.timer.objects.rows.Rows;
 import br.com.timer.objects.rows.TypeField;
 import br.estacio.consultasapp.database.DatabaseManager;
 import br.estacio.consultasapp.handler.Manager;
+import br.estacio.consultasapp.user.ExtendedDAO;
 import br.estacio.consultasapp.user.User;
+import br.estacio.consultasapp.user.UserDAO;
 import br.estacio.consultasapp.user.enums.Days;
 import br.estacio.consultasapp.user.enums.Genders;
 import br.estacio.consultasapp.user.enums.Status;
@@ -22,7 +24,7 @@ import java.util.*;
 @Setter
 @Builder
 @TableName(name = "doctors")
-public class DoctorDAO extends HandlerDAO implements User, IdInterface {
+public class DoctorDAO extends UserDAO implements User {
 
     @ColumnRow
     @PrimaryKeyAutoIncrement
@@ -66,6 +68,8 @@ public class DoctorDAO extends HandlerDAO implements User, IdInterface {
 
     @ColumnRow(field = "time_id")
     private int timeId;
+
+    private boolean loaded;
 
     private final Map<Days, List<String>> available = new HashMap<>();
 
@@ -121,12 +125,19 @@ public class DoctorDAO extends HandlerDAO implements User, IdInterface {
         super.save(Rows.of("doctor_id", this.doctorId));
     }
 
+    @Override
+    public boolean isLoaded() {
+        return loaded;
+    }
+
     public void load() {
+        this.loaded = true;
         super.load(Rows.of("id", this.id));
         loadTime();
     }
 
     public void loadDoctorId() {
+        this.loaded = true;
         super.load(Rows.of("doctor_id", this.doctorId));
         loadTime();
     }

@@ -1,9 +1,18 @@
 package br.estacio.consultasapp.user;
 
-public interface User {
+import br.estacio.consultasapp.user.enums.Genders;
+import br.estacio.consultasapp.user.interfaces.IStatus;
 
-    int getId();
+public interface User extends IStatus {
+
     String getUsername();
+    String getFullName();
     String getPassword();
+    String getImage();
+    String getEmail();
+    Genders getGender();
+
+    boolean isLoaded();
+    void load();
 
 }

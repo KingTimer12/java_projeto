@@ -3,14 +3,17 @@ package br.estacio.consultasapp.user;
 import br.estacio.consultasapp.database.DatabaseManager;
 import br.estacio.consultasapp.handler.Manager;
 import br.estacio.consultasapp.user.dao.*;
+import javafx.scene.image.Image;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+
+import java.io.File;
 
 @Data
 @EqualsAndHashCode(callSuper = true)
 public class UserManager extends Manager {
 
-    private User user;
+    private UserDAO user;
 
     @Override
     public void start() {
@@ -28,11 +31,28 @@ public class UserManager extends Manager {
         return this.user.getId();
     }
 
+    public String getFullName() {
+        return this.user.getFullName();
+    }
+
     public String getName() {
-        return this.user.getUsername().substring(0, 1).toUpperCase() + this.user.getUsername().substring(1);
+        if (this.user.getUsername() == null ||
+                this.user.getUsername().isBlank() ||
+                this.user.getUsername().equalsIgnoreCase("null"))
+            return this.getFullName();
+        return this.user.getUsername();
     }
 
     public String getPassword() {
         return this.user.getPassword();
+    }
+
+    public String getImagePath() {
+        return this.user.getImage();
+    }
+
+    public Image getImage() {
+        File file = new File(this.getImagePath());
+        return new Image(file.toURI().toString(), 137, 95, false, true);
     }
 }

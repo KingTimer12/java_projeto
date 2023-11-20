@@ -11,6 +11,7 @@
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
@@ -41,24 +42,24 @@
                               <FontAwesomeIconView fill="WHITE" glyphName="BOOK" layoutX="23.0" layoutY="26.0" size="16.0" />
                            </children>
                         </AnchorPane>
-                        <Label alignment="CENTER" layoutX="763.0" layoutY="13.0" text="Seja bem-vindo," AnchorPane.rightAnchor="243.0">
+                        <Label alignment="CENTER" layoutX="588.0" layoutY="13.0" text="Seja bem-vindo," AnchorPane.rightAnchor="418.0">
                            <font>
                               <Font name="Tahoma" size="13.0" />
                            </font>
                         </Label>
-                        <Label fx:id="lbl_user_name" layoutX="860.0" layoutY="12.0" prefHeight="19.0" prefWidth="107.0" text="Aaron Yan" AnchorPane.rightAnchor="133.0">
+                        <Label fx:id="lbl_user_name" layoutX="685.0" layoutY="12.0" prefHeight="19.0" prefWidth="93.0" text="Aaron Yan" AnchorPane.rightAnchor="322.0">
                            <font>
                               <Font name="Tahoma Bold" size="13.0" />
                            </font>
                         </Label>
-                        <Circle fx:id="circle_pfp" fill="DODGERBLUE" layoutX="988.0" layoutY="21.0" radius="14.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" AnchorPane.rightAnchor="97.0" />
-                        <Label layoutX="1011.0" layoutY="11.0" text="Disponível" AnchorPane.rightAnchor="29.0">
+                        <Circle fx:id="circle_pfp" fill="DODGERBLUE" layoutX="798.0" layoutY="21.0" radius="14.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" AnchorPane.rightAnchor="288.0" />
+                        <Label layoutX="820.0" layoutY="11.0" text="Disponível" AnchorPane.rightAnchor="220.0">
                            <font>
                               <Font size="13.0" />
                            </font>
                         </Label>
-                        <Circle fill="#06ee38" layoutX="1079.0" layoutY="21.0" radius="4.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" AnchorPane.rightAnchor="17.0" />
-                        <Label fx:id="lbl_date_now" alignment="CENTER_RIGHT" layoutX="486.0" layoutY="11.0" prefHeight="19.0" prefWidth="250.0" text="DD:MM:YYYY" textAlignment="RIGHT" AnchorPane.rightAnchor="364.0">
+                        <Circle fill="#06ee38" layoutX="888.0" layoutY="21.0" radius="4.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" AnchorPane.rightAnchor="208.0" />
+                        <Label fx:id="lbl_date_now" alignment="CENTER_RIGHT" layoutX="311.0" layoutY="11.0" prefHeight="19.0" prefWidth="250.0" text="DD:MM:YYYY" textAlignment="RIGHT" AnchorPane.rightAnchor="539.0">
                            <font>
                               <Font name="Tahoma" size="13.0" />
                            </font>
@@ -68,6 +69,21 @@
                               <Font name="Tahoma Bold" size="18.0" />
                            </font>
                         </Label>
+                        <Button layoutX="1042.0" layoutY="8.0" mnemonicParsing="false" onAction="#close" prefHeight="12.0" prefWidth="51.0" styleClass="close" stylesheets="@style/LoginDesign.css">
+                           <graphic>
+                              <FontAwesomeIconView glyphName="CLOSE" />
+                           </graphic>
+                        </Button>
+                        <Button layoutX="980.0" layoutY="8.0" mnemonicParsing="false" onAction="#minimize" prefHeight="12.0" prefWidth="51.0" styleClass="minus" stylesheets="@style/LoginDesign.css">
+                           <graphic>
+                              <FontAwesomeIconView glyphName="MINUS" />
+                           </graphic>
+                        </Button>
+                        <Button fx:id="logout_btn" layoutX="910.0" layoutY="7.0" mnemonicParsing="false" onAction="#logout" prefHeight="25.0" prefWidth="63.0" styleClass="logout" stylesheets="@style/LoginDesign.css" text="Log out">
+                           <font>
+                              <Font name="Tahoma" size="12.0" />
+                           </font>
+                        </Button>
                      </children>
                      <styleClass>
                         <String fx:value="white-bg" />
@@ -276,12 +292,12 @@
                                        </graphic>
                                     </Button>
                                     <TextField fx:id="pro_search_textfield" layoutX="356.0" layoutY="9.0" prefHeight="33.0" prefWidth="182.0" promptText="Pesquisar" AnchorPane.leftAnchor="356.0" AnchorPane.topAnchor="9.0" />
-                                    <Button fx:id="pro_search_btn" layoutX="541.0" layoutY="9.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="37.0" AnchorPane.leftAnchor="541.0" AnchorPane.topAnchor="9.0">
+                                    <Button fx:id="pro_search_btn" layoutX="541.0" layoutY="9.0" mnemonicParsing="false" onAction="#searchPage" prefHeight="33.0" prefWidth="37.0" AnchorPane.leftAnchor="541.0" AnchorPane.topAnchor="9.0">
                                        <graphic>
                                           <FontAwesomeIconView glyphName="SEARCH" />
                                        </graphic>
                                     </Button>
-                                    <Button fx:id="pro_refresh_btn" layoutX="585.0" layoutY="9.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="34.0" AnchorPane.leftAnchor="585.0" AnchorPane.topAnchor="9.0">
+                                    <Button fx:id="pro_refresh_btn" layoutX="585.0" layoutY="9.0" mnemonicParsing="false" onAction="#refreshPage" prefHeight="33.0" prefWidth="34.0" AnchorPane.leftAnchor="585.0" AnchorPane.topAnchor="9.0">
                                        <graphic>
                                           <FontAwesomeIconView glyphName="REFRESH" />
                                        </graphic>
@@ -432,8 +448,6 @@
                                           <TableColumn fx:id="patient_genre" prefWidth="69.0" text="Gênero" />
                                           <TableColumn fx:id="patient_phone" prefWidth="105.0" text="Número de Contato" />
                                           <TableColumn fx:id="patient_address" prefWidth="61.0" text="Endereço" />
-                                          <TableColumn fx:id="patient_diagnosis" prefWidth="83.0" text="Diagnóstico" />
-                                          <TableColumn fx:id="patient_treatment" prefWidth="78.0" text="Tratamento" />
                                           <TableColumn fx:id="patient_profissional" text="Profissional" />
                                           <TableColumn fx:id="patient_status" prefWidth="55.0" text="Status" />
                                           <TableColumn fx:id="patient_action" prefWidth="95.0" text="Ação" />
@@ -443,12 +457,12 @@
                                        </columnResizePolicy>
                                     </TableView>
                                     <TextField fx:id="patient_search_textfield" layoutX="339.0" layoutY="9.0" prefHeight="33.0" prefWidth="182.0" promptText="Pesquisar" AnchorPane.leftAnchor="339.0" AnchorPane.topAnchor="9.0" />
-                                    <Button fx:id="patient_search_btn" layoutX="527.0" layoutY="9.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="37.0" AnchorPane.leftAnchor="527.0" AnchorPane.topAnchor="9.0">
+                                    <Button fx:id="patient_search_btn" layoutX="527.0" layoutY="9.0" mnemonicParsing="false" onAction="#searchPage" prefHeight="33.0" prefWidth="37.0" AnchorPane.leftAnchor="527.0" AnchorPane.topAnchor="9.0">
                                        <graphic>
                                           <FontAwesomeIconView glyphName="SEARCH" />
                                        </graphic>
                                     </Button>
-                                    <Button fx:id="patient_refresh_btn" layoutX="570.0" layoutY="9.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="34.0" AnchorPane.leftAnchor="570.0" AnchorPane.topAnchor="9.0">
+                                    <Button fx:id="patient_refresh_btn" layoutX="570.0" layoutY="9.0" mnemonicParsing="false" onAction="#refreshPage" prefHeight="33.0" prefWidth="34.0" AnchorPane.leftAnchor="570.0" AnchorPane.topAnchor="9.0">
                                        <graphic>
                                           <FontAwesomeIconView glyphName="REFRESH" />
                                        </graphic>
@@ -728,7 +742,7 @@
                                              </styleClass>
                                           </ComboBox>
                                           <Button fx:id="appointment_back_btn" layoutX="61.0" layoutY="490.0" mnemonicParsing="false" onAction="#showAndHideList" prefHeight="34.0" prefWidth="96.0" styleClass="login-btn" stylesheets="@style/LoginDesign.css" text="Voltar" AnchorPane.bottomAnchor="14.0" AnchorPane.leftAnchor="61.0" />
-                                          <Button fx:id="appointment_confirm_btn" layoutX="231.0" layoutY="102.0" mnemonicParsing="false" onAction="#appointmentSearchConfirm" prefHeight="34.0" prefWidth="85.0" styleClass="login-btn" stylesheets="@style/LoginDesign.css" text="Confirmar" />
+                                          <Button fx:id="appointment_confirm_btn" layoutX="231.0" layoutY="102.0" mnemonicParsing="false" onAction="#appointmentSearchConfirm" prefHeight="34.0" prefWidth="85.0" styleClass="login-btn" stylesheets="@style/LoginDesign.css" text="Confirmar" AnchorPane.rightAnchor="9.0" />
                                           <TextField fx:id="appointment_pro_textfield" disable="true" layoutX="14.0" layoutY="178.0" prefHeight="31.0" prefWidth="298.0" styleClass="text-field" stylesheets="@style/LoginDesign.css" />
                                        </children>
                                     </AnchorPane>
@@ -742,12 +756,12 @@
                                        </graphic>
                                     </Button>
                                     <TextField fx:id="appointment_search_textfield" layoutX="310.0" layoutY="11.0" prefHeight="33.0" prefWidth="182.0" promptText="Pesquisar" AnchorPane.leftAnchor="310.0" AnchorPane.topAnchor="11.0" />
-                                    <Button fx:id="appointment_search_btn" layoutX="498.0" layoutY="11.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="37.0" AnchorPane.leftAnchor="498.0" AnchorPane.topAnchor="11.0">
+                                    <Button fx:id="appointment_search_btn" layoutX="498.0" layoutY="11.0" mnemonicParsing="false" onAction="#searchPage" prefHeight="33.0" prefWidth="37.0" AnchorPane.leftAnchor="498.0" AnchorPane.topAnchor="11.0">
                                        <graphic>
                                           <FontAwesomeIconView glyphName="SEARCH" />
                                        </graphic>
                                     </Button>
-                                    <Button fx:id="appointment_refresh_btn" layoutX="543.0" layoutY="11.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="34.0" AnchorPane.leftAnchor="543.0" AnchorPane.topAnchor="11.0">
+                                    <Button fx:id="appointment_refresh_btn" layoutX="543.0" layoutY="11.0" mnemonicParsing="false" onAction="#refreshPage" prefHeight="33.0" prefWidth="34.0" AnchorPane.leftAnchor="543.0" AnchorPane.topAnchor="11.0">
                                        <graphic>
                                           <FontAwesomeIconView glyphName="REFRESH" />
                                        </graphic>
@@ -807,12 +821,12 @@
                                        </graphic>
                                     </Button>
                                     <TextField fx:id="secretary_search_textfield" layoutX="356.0" layoutY="9.0" prefHeight="33.0" prefWidth="182.0" promptText="Pesquisar" AnchorPane.leftAnchor="356.0" AnchorPane.topAnchor="9.0" />
-                                    <Button fx:id="secretary_search_btn" layoutX="541.0" layoutY="9.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="37.0" AnchorPane.leftAnchor="541.0" AnchorPane.topAnchor="9.0">
+                                    <Button fx:id="secretary_search_btn" layoutX="541.0" layoutY="9.0" mnemonicParsing="false" onAction="#searchPage" prefHeight="33.0" prefWidth="37.0" AnchorPane.leftAnchor="541.0" AnchorPane.topAnchor="9.0">
                                        <graphic>
                                           <FontAwesomeIconView glyphName="SEARCH" />
                                        </graphic>
                                     </Button>
-                                    <Button fx:id="secretary_refresh_btn" layoutX="585.0" layoutY="9.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="34.0" AnchorPane.leftAnchor="585.0" AnchorPane.topAnchor="9.0">
+                                    <Button fx:id="secretary_refresh_btn" layoutX="585.0" layoutY="9.0" mnemonicParsing="false" onAction="#refreshPage" prefHeight="33.0" prefWidth="34.0" AnchorPane.leftAnchor="585.0" AnchorPane.topAnchor="9.0">
                                        <graphic>
                                           <FontAwesomeIconView glyphName="REFRESH" />
                                        </graphic>
@@ -871,6 +885,66 @@
                               </AnchorPane>
                            </children>
                         </AnchorPane>
+                        <AnchorPane fx:id="profile_form" layoutX="99.0" layoutY="135.0" prefHeight="560.0" prefWidth="886.0" stylesheets="@style/MainFormDesign.css" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                           <children>
+                              <AnchorPane layoutX="14.0" layoutY="14.0" prefHeight="530.0" prefWidth="332.0" stylesheets="@style/MainFormDesign.css">
+                                 <styleClass>
+                                    <String fx:value="white-bg" />
+                                    <String fx:value="shadow" />
+                                    <String fx:value="radius" />
+                                 </styleClass>
+                                 <children>
+                                    <Circle fx:id="profile_pfp_circle" fill="#202122" layoutX="166.0" layoutY="130.0" radius="100.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
+                                    <Button fx:id="profile_import_btn" layoutX="87.0" layoutY="253.0" mnemonicParsing="false" onAction="#changeProfilePhoto" prefHeight="38.0" prefWidth="155.0" stylesheets="@style/MainFormDesign.css" text="Importar">
+                                       <styleClass>
+                                          <String fx:value="btn-1" />
+                                          <String fx:value="bg-color-1" />
+                                       </styleClass>
+                                    </Button>
+                                    <Label layoutX="121.0" layoutY="316.0" text="Nome:" textAlignment="JUSTIFY" />
+                                    <Label fx:id="profile_fullname_lbl" layoutX="166.0" layoutY="316.0" text="----------" />
+                                    <Label layoutX="72.0" layoutY="344.0" text="Email Vinculado:" textAlignment="JUSTIFY" />
+                                    <Label fx:id="profile_email_lbl" layoutX="166.0" layoutY="344.0" text="----------" />
+                                    <Label layoutX="85.0" layoutY="372.0" prefHeight="17.0" prefWidth="72.0" text="Conta Criada:" textAlignment="RIGHT" />
+                                    <Label fx:id="profile_created_account_lbl" layoutX="166.0" layoutY="372.0" text="----------" />
+                                    <Label layoutX="113.0" layoutY="398.0" text="Gênero:" textAlignment="JUSTIFY" />
+                                    <Label fx:id="profile_genre_lbl" layoutX="165.0" layoutY="398.0" text="----------" />
+                                 </children>
+                              </AnchorPane>
+                              <AnchorPane layoutX="358.0" layoutY="14.0" prefHeight="529.0" prefWidth="515.0" stylesheets="@style/MainFormDesign.css">
+                                 <styleClass>
+                                    <String fx:value="white-bg" />
+                                    <String fx:value="shadow" />
+                                    <String fx:value="radius" />
+                                 </styleClass>
+                                 <children>
+                                    <Label layoutX="14.0" layoutY="14.0" text="Editar Perfil">
+                                       <font>
+                                          <Font name="Tahoma" size="31.0" />
+                                       </font>
+                                    </Label>
+                                    <FontAwesomeIconView glyphName="EDIT" layoutX="179.0" layoutY="48.0" size="3em" wrappingWidth="37.0" />
+                                    <Label layoutX="165.0" layoutY="95.0" text="Nome:" />
+                                    <TextField fx:id="profile_fullname_textfield" layoutX="216.0" layoutY="91.0" />
+                                    <Label layoutX="170.0" layoutY="129.0" prefHeight="17.0" prefWidth="35.0" text="Email:" />
+                                    <TextField fx:id="profile_email_textfield" layoutX="216.0" layoutY="125.0" />
+                                    <Label layoutX="138.0" layoutY="165.0" text="Nova senha:" />
+                                    <PasswordField fx:id="profile_oldpassword_textfield" layoutX="216.0" layoutY="198.0" />
+                                    <TextField fx:id="profile_newpassword_textfield" layoutX="216.0" layoutY="161.0" />
+                                    <Label layoutX="138.0" layoutY="202.0" text="Senha atual:" />
+                                    <Label layoutX="158.0" layoutY="239.0" text="Gênero:" />
+                                    <ComboBox fx:id="profile_genre_select" layoutX="216.0" layoutY="235.0" prefWidth="150.0" />
+                                    <FontAwesomeIconView fill="#00000096" glyphName="COGS" layoutX="257.0" layoutY="494.0" size="20em" />
+                                    <Button fx:id="profile_save_btn" layoutX="220.0" layoutY="276.0" mnemonicParsing="false" onAction="#saveProfile" prefHeight="36.0" prefWidth="143.0" stylesheets="@style/MainFormDesign.css" text="Salvar">
+                                       <styleClass>
+                                          <String fx:value="bg-color-1" />
+                                          <String fx:value="btn-1" />
+                                       </styleClass>
+                                    </Button>
+                                 </children>
+                              </AnchorPane>
+                           </children>
+                        </AnchorPane>
                      </children>
                   </AnchorPane>
                </center>
@@ -919,12 +993,7 @@
                               <FontAwesomeIconView glyphName="BOOK" size="1.5em" />
                            </graphic>
                         </Button>
-                        <Button fx:id="btn_report" layoutX="7.0" layoutY="423.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="200.0" styleClass="nav-btn-1" stylesheets="@style/MainFormDesign.css" text="Relatórios">
-                           <graphic>
-                              <FontAwesomeIconView glyphName="CLIPBOARD" size="1.5em" />
-                           </graphic>
-                        </Button>
-                        <Button fx:id="btn_config" layoutX="8.0" layoutY="470.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="200.0" styleClass="nav-btn-1" stylesheets="@style/MainFormDesign.css" text="Configuração">
+                        <Button fx:id="btn_config" layoutX="7.0" layoutY="423.0" mnemonicParsing="false" onAction="#switchForm" prefHeight="40.0" prefWidth="200.0" styleClass="nav-btn-1" stylesheets="@style/MainFormDesign.css" text="Configuração">
                            <graphic>
                               <FontAwesomeIconView glyphName="COG" size="1.5em" />
                            </graphic>

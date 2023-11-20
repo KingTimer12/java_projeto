@@ -6,7 +6,7 @@ import lombok.RequiredArgsConstructor;
 @Getter
 @RequiredArgsConstructor
 public enum StatusAppointment {
-    CANCELED("Cancelado"), PRESENT("Compareceu"), ACTIVE("Ativo");
+    CANCELED("Desmarcado"), PRESENT("Compareceu"), ACTIVE("Ativo");
 
     private final String name;
 }

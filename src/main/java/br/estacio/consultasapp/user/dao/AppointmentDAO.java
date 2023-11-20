@@ -9,14 +9,14 @@ import br.com.timer.objects.rows.Rows;
 import br.estacio.consultasapp.database.DatabaseManager;
 import br.estacio.consultasapp.handler.Manager;
 import br.estacio.consultasapp.user.enums.Consults;
-import br.estacio.consultasapp.user.enums.Status;
 import br.estacio.consultasapp.user.enums.StatusAppointment;
 import lombok.Builder;
 import lombok.Getter;
-import lombok.extern.apachecommons.CommonsLog;
+import lombok.Setter;
 
 import java.util.Date;
 
+@Setter
 @Getter
 @Builder
 @TableName(name = "appointments")
@@ -42,6 +42,7 @@ public class AppointmentDAO extends HandlerDAO {
     private Date createdAt;
 
     private String patientName;
+    private DoctorDAO doctorDAO;
     private String doctorName;
 
     public void loadPatientName() {
@@ -51,13 +52,15 @@ public class AppointmentDAO extends HandlerDAO {
     }
 
     public void loadDoctorName() {
-        DoctorDAO doctor = DoctorDAO.builder().id(doctorId).build();
-        doctor.load();
-        this.doctorName = doctor.getFullName();
+        if (this.doctorDAO == null) {
+            this.doctorDAO = DoctorDAO.builder().id(doctorId).build();
+            this.doctorDAO.load();
+        }
+        this.doctorName = this.doctorDAO.getFullName();
     }
 
     public void save() {
-        super.save(Rows.of("patient_id", patientId), Rows.of("doctor_id", doctorId));
+        super.save(Rows.of("id", id));
     }
 
     public void load() {
