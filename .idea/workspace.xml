@@ -4,42 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="00ad0853-d299-4ee3-9f47-99c421240c28" name="Changes" comment="Atualizado o gradle">
-      <change afterPath="$PROJECT_DIR$/src/main/java/br/estacio/consultasapp/controller/IClose.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/br/estacio/consultasapp/controller/IMinus.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/br/estacio/consultasapp/controller/form/GeneralVariables.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/br/estacio/consultasapp/controller/form/types/SecretaryForm.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/br/estacio/consultasapp/controller/login/types/SecretaryLogin.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/br/estacio/consultasapp/user/ExtendedDAO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/br/estacio/consultasapp/user/UserDAO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/br/estacio/consultasapp/user/interfaces/IStatus.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/br/estacio/consultasapp/secretaryLogin.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/br/estacio/consultasapp/secretaryMainForm.fxml" afterDir="false" />
+    <list default="true" id="00ad0853-d299-4ee3-9f47-99c421240c28" name="Changes" comment="Projeto finalizado">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/br/estacio/consultasapp/controller/GuiManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/estacio/consultasapp/controller/GuiManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/br/estacio/consultasapp/controller/form/FormController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/estacio/consultasapp/controller/form/FormController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/br/estacio/consultasapp/controller/form/types/AdminForm.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/estacio/consultasapp/controller/form/types/AdminForm.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/br/estacio/consultasapp/controller/form/types/DoctorForm.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/estacio/consultasapp/controller/form/types/DoctorForm.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/br/estacio/consultasapp/controller/login/ILogin.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/estacio/consultasapp/controller/login/ILogin.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/br/estacio/consultasapp/controller/login/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/estacio/consultasapp/controller/login/LoginController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/br/estacio/consultasapp/controller/login/types/DoctorLogin.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/estacio/consultasapp/controller/login/types/DoctorLogin.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/br/estacio/consultasapp/database/DatabaseManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/estacio/consultasapp/database/DatabaseManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/br/estacio/consultasapp/user/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/estacio/consultasapp/user/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/br/estacio/consultasapp/user/UserManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/estacio/consultasapp/user/UserManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/br/estacio/consultasapp/user/dao/AdminDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/estacio/consultasapp/user/dao/AdminDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/br/estacio/consultasapp/user/dao/AppointmentDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/estacio/consultasapp/user/dao/AppointmentDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/br/estacio/consultasapp/user/dao/DoctorDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/estacio/consultasapp/user/dao/DoctorDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/br/estacio/consultasapp/user/dao/PatientDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/estacio/consultasapp/user/dao/PatientDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/br/estacio/consultasapp/user/dao/SecretaryDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/estacio/consultasapp/user/dao/SecretaryDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/br/estacio/consultasapp/user/enums/Status.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/estacio/consultasapp/user/enums/Status.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/br/estacio/consultasapp/user/enums/StatusAppointment.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/estacio/consultasapp/user/enums/StatusAppointment.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/br/estacio/consultasapp/user/interfaces/IdInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/estacio/consultasapp/user/interfaces/IdInterface.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/br/estacio/consultasapp/utils/UsersPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/estacio/consultasapp/utils/UsersPanel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/br/estacio/consultasapp/adminMainForm.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/br/estacio/consultasapp/adminMainForm.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/br/estacio/consultasapp/doctorLogin.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/br/estacio/consultasapp/doctorLogin.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/br/estacio/consultasapp/doctorMainForm.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/br/estacio/consultasapp/doctorMainForm.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/br/estacio/consultasapp/style/LoginDesign.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/br/estacio/consultasapp/style/LoginDesign.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -92,6 +59,9 @@
       </UrlAndAccount>
     </option>
   </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 5
 }</component>
@@ -101,18 +71,18 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "master",
-    "last_opened_file_path": "D:/java projetos/workspace/ConsultasApp/src/main/resources/br/estacio/consultasapp",
-    "project.structure.last.edited": "Project",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.2",
-    "settings.editor.selected.configurable": "preferences.pluginManager"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/java projetos/workspace/ConsultasApp/src/main/resources/br/estacio/consultasapp&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="D:\java projetos\workspace\ConsultasApp\src\main\resources\br\estacio\consultasapp" />
@@ -253,7 +223,15 @@
       <option name="project" value="LOCAL" />
       <updated>1699910372957</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Projeto finalizado">
+      <option name="closed" value="true" />
+      <created>1700451347047</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1700451347047</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -262,7 +240,8 @@
     <MESSAGE value="Finalizado todos os cadastros" />
     <MESSAGE value="As interfaces que faltavam" />
     <MESSAGE value="Atualizado o gradle" />
-    <option name="LAST_COMMIT_MESSAGE" value="Atualizado o gradle" />
+    <MESSAGE value="Projeto finalizado" />
+    <option name="LAST_COMMIT_MESSAGE" value="Projeto finalizado" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

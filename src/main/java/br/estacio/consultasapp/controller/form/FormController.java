@@ -721,8 +721,10 @@ public abstract class FormController extends GeneralVariables implements Initial
         updateDoctors(userDAO, true);
         patient_genre_dropdown.setItems(genreList());
         if (patientDAO == null) {
-            if (patient_responsible_dropdown != null)
+            if (patient_responsible_dropdown != null) {
+                patient_responsible_dropdown.setItems(doctors(userDAO));
                 patient_responsible_dropdown.getSelectionModel().selectFirst();
+            }
             patient_genre_dropdown.getSelectionModel().selectFirst();
             patient_add_btn.setText("Adicionar");
             return;
